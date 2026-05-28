@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Safehub HQ — AI-Driven HSE Investigations & Root-Cause Analysis</title>
+<title>Safehub HQ. AI-Assisted HSE Incident Investigations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -362,6 +362,49 @@
     .report-body { padding: 28px 24px; }
     .rep-icam-grid { grid-template-columns: 1fr; }
   }
+  /* CHIPS */
+  .chip-group-label { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: 0.01em; display: block; }
+  .chip-category { font-size: 11px; font-weight: 600; color: var(--muted-2); letter-spacing: 0.04em; text-transform: uppercase; margin: 8px 0 4px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+  .chip { padding: 5px 12px; border: 1.5px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--muted); background: var(--bg-soft); cursor: pointer; transition: all 0.15s; user-select: none; white-space: nowrap; }
+  .chip:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-50); }
+  .chip.selected { background: var(--blue); border-color: var(--blue); color: white; }
+  .chip.hpi { border-color: var(--amber); color: var(--amber); background: #fffbeb; font-weight: 600; }
+  .chip.hpi:hover { background: #fef3c7; }
+  .chip.hpi.selected { background: var(--amber); border-color: var(--amber); color: white; }
+  .chip.fmt { padding: 7px 16px; font-size: 13px; }
+  .chip.fmt.selected { background: var(--blue); border-color: var(--blue); color: white; }
+
+  /* UPLOAD ZONE */
+  .upload-zone { border: 1.5px dashed var(--line); border-radius: 12px; padding: 14px 16px; background: var(--bg-soft); cursor: pointer; transition: all 0.15s; text-align: center; position: relative; }
+  .upload-zone:hover { border-color: var(--blue); background: var(--blue-50); }
+  .upload-zone.dragover { border-color: var(--blue); background: var(--blue-50); }
+  .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+  .upload-icon { width: 20px; height: 20px; color: var(--muted-2); margin: 0 auto 4px; }
+  .upload-label { font-size: 13px; font-weight: 500; color: var(--muted); }
+  .upload-sub { display: block; font-size: 11px; color: var(--muted-2); margin-top: 2px; }
+  .upload-files-list { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .upload-file-tag { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; background: var(--blue-100); border-radius: 999px; font-size: 11px; color: var(--blue); font-weight: 500; }
+  .upload-file-tag .rm { cursor: pointer; opacity: 0.6; font-size: 13px; line-height: 1; }
+  .upload-file-tag .rm:hover { opacity: 1; }
+
+  /* PRICING GRID — 4 tiers */
+  .pricing-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch; }
+  @media (max-width: 900px) { .pricing-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .pricing-grid-4 { grid-template-columns: 1fr; } }
+
+  /* WORD DOWNLOAD BUTTON */
+  .btn-word { background: #1d6f42; color: white; border: none; }
+  .btn-word:hover { background: #155533; transform: translateY(-1px); }
+
+  /* REPORT INFO GAPS */
+  .rep-gap-item { display: flex; align-items: flex-start; gap: 8px; padding: 8px 12px; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; margin-bottom: 8px; font-size: 13px; color: #92400e; }
+  .rep-gap-icon { flex-shrink: 0; margin-top: 1px; }
+
+  /* DRAFT BANNER */
+  .draft-banner { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 12px; color: #92400e; font-weight: 500; }
+  .draft-banner svg { flex-shrink: 0; width: 14px; height: 14px; }
+
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .hero-split { padding: 100px 16px 32px; gap: 24px; }
@@ -423,8 +466,8 @@
       <span class="pill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></span>
       AI for HSE Teams
     </div>
-    <h1>AI-Driven HSE Incident Investigations<span class="accent">&amp; Root-Cause Analysis</span></h1>
-    <p class="subhead">Turn raw incident details into a complete, defensible investigation report &mdash; root cause, 5 Whys, ICAM and corrective actions &mdash; in under a minute. Built with HSE professionals, for HSE professionals.</p>
+    <h1>AI-Assisted HSE<span class="accent">Incident Investigations</span></h1>
+    <p class="subhead">Turn raw incident details into a structured, defensible first draft in under a minute. ICAM, 5 Whys, contributing factors, and suggested corrective actions. Built with HSE professionals, for HSE professionals.</p>
     <div class="hero-cta-row">
       <a class="btn btn-primary btn-lg" onclick="focusForm()">Try it now <span class="arr">&rarr;</span></a>
       <a class="btn btn-secondary btn-lg" onclick="goToSection('framework')">See how it works</a>
@@ -447,12 +490,14 @@
           Try a sample
         </a>
       </div>
+
       <div class="try-field">
         <label>What happened?</label>
-        <textarea class="try-textarea" id="hero-description" placeholder="Describe the incident in your own words. Include sequence, equipment, conditions, and any context — Safehub will structure it." rows="5"></textarea>
+        <textarea class="try-textarea" id="hero-description" placeholder="Describe the incident in your own words. Include sequence, equipment, conditions, and any context." rows="4"></textarea>
       </div>
+
       <div class="try-row-2">
-        <div class="try-field" style="margin-bottom: 0;">
+        <div class="try-field" style="margin-bottom:0;">
           <label>Industry</label>
           <select class="try-select" id="hero-industry">
             <option value="">Select...</option>
@@ -463,12 +508,33 @@
             <option>Oil &amp; Gas</option>
             <option>Utilities</option>
             <option>Healthcare</option>
-            <option>Warehousing</option>
+            <option>Warehousing / Logistics</option>
+            <option>Agriculture</option>
             <option>Other</option>
           </select>
         </div>
-        <div class="try-field" style="margin-bottom: 0;">
-          <label>Incident type</label>
+        <div class="try-field" style="margin-bottom:0;">
+          <label>Country</label>
+          <select class="try-select" id="hero-country" onchange="onCountryChange()">
+            <option value="">Select...</option>
+            <option value="Australia">Australia</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="United States">United States</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="try-row-2" id="state-row" style="display:none;margin-top:12px;">
+        <div class="try-field" style="margin-bottom:0;">
+          <label>State / Province</label>
+          <select class="try-select" id="hero-state">
+            <option value="">Select...</option>
+          </select>
+        </div>
+        <div class="try-field" style="margin-bottom:0;">
+          <label>Incident Type</label>
           <select class="try-select" id="hero-type">
             <option value="">Select...</option>
             <optgroup label="Safety">
@@ -500,7 +566,85 @@
           </select>
         </div>
       </div>
-      <button class="btn btn-primary btn-lg btn-full" onclick="generateAnalysis()">Generate Investigation <span class="arr">&rarr;</span></button>
+
+      <div id="type-row-standalone" style="margin-top:12px;">
+        <div class="try-field" style="margin-bottom:0;">
+          <label>Incident Type</label>
+          <select class="try-select" id="hero-type-single">
+            <option value="">Select...</option>
+            <optgroup label="Safety">
+              <option>Near miss</option>
+              <option>First aid</option>
+              <option>Medical treatment</option>
+              <option>Lost time injury</option>
+              <option>Serious injury</option>
+              <option>Fatality</option>
+            </optgroup>
+            <optgroup label="Environment">
+              <option>Environmental spill / release</option>
+              <option>Air emission breach</option>
+              <option>Waste / contamination</option>
+              <option>Wildlife / ecology impact</option>
+            </optgroup>
+            <optgroup label="Health">
+              <option>Occupational illness</option>
+              <option>Exposure event</option>
+              <option>Mental health / psychosocial</option>
+              <option>Fatigue-related</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Property / asset damage</option>
+              <option>Process safety event</option>
+              <option>Security incident</option>
+              <option>Other / not listed</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div class="try-field" style="margin-top:14px;">
+        <span class="chip-group-label">Risk areas <span style="font-weight:400;color:var(--muted-2);">(select all that apply)</span></span>
+        <div class="chip-row">
+          <span class="chip hpi" data-risk="HPI / SIF potential" onclick="toggleChip(this,'risk')">&#9888; HPI / SIF potential</span>
+        </div>
+        <div class="chip-row" id="risk-chips">
+          <span class="chip" data-risk="Confined space" onclick="toggleChip(this,'risk')">Confined space</span>
+          <span class="chip" data-risk="Working at height" onclick="toggleChip(this,'risk')">Working at height</span>
+          <span class="chip" data-risk="Moving plant / machinery" onclick="toggleChip(this,'risk')">Moving plant / machinery</span>
+          <span class="chip" data-risk="Stored energy" onclick="toggleChip(this,'risk')">Stored energy</span>
+          <span class="chip" data-risk="Electrical" onclick="toggleChip(this,'risk')">Electrical</span>
+          <span class="chip" data-risk="Hot work" onclick="toggleChip(this,'risk')">Hot work</span>
+          <span class="chip" data-risk="Hazardous substances" onclick="toggleChip(this,'risk')">Hazardous substances</span>
+          <span class="chip" data-risk="Lifting operations" onclick="toggleChip(this,'risk')">Lifting operations</span>
+          <span class="chip" data-risk="Excavation / ground collapse" onclick="toggleChip(this,'risk')">Excavation / ground</span>
+          <span class="chip" data-risk="Slip / trip / fall" onclick="toggleChip(this,'risk')">Slip / trip / fall</span>
+          <span class="chip" data-risk="Vehicle / traffic" onclick="toggleChip(this,'risk')">Vehicle / traffic</span>
+          <span class="chip" data-risk="Fatigue" onclick="toggleChip(this,'risk')">Fatigue</span>
+          <span class="chip" data-risk="Manual handling" onclick="toggleChip(this,'risk')">Manual handling</span>
+        </div>
+      </div>
+
+      <div class="try-field" style="margin-top:10px;">
+        <span class="chip-group-label">Supporting documents <span style="font-weight:400;color:var(--muted-2);">(optional)</span></span>
+        <div class="upload-zone" id="upload-zone">
+          <input type="file" id="file-input" multiple accept=".pdf,.docx,.doc,.xlsx,.xls,.jpg,.jpeg,.png" onchange="onFilesSelected(this.files)">
+          <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <div class="upload-label">Drop files or click to upload</div>
+          <span class="upload-sub">PDF, Word, Excel, images</span>
+        </div>
+        <div class="upload-files-list" id="upload-files-list"></div>
+      </div>
+
+      <div class="try-field" style="margin-top:10px;">
+        <span class="chip-group-label">Output format</span>
+        <div class="chip-row">
+          <span class="chip fmt selected" data-fmt="pdf" onclick="selectFmt(this)">PDF</span>
+          <span class="chip fmt" data-fmt="word" onclick="selectFmt(this)">Word (.docx)</span>
+          <span class="chip fmt" data-fmt="both" onclick="selectFmt(this)">PDF + Word</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg btn-full" style="margin-top:14px;" onclick="generateAnalysis()">Generate Investigation <span class="arr">&rarr;</span></button>
       <div class="try-foot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Your data is encrypted, never used to train AI, and auto-deleted on request.
@@ -518,7 +662,7 @@
     </div>
     <div class="stat-mini">
       <div class="stat-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-      <div><div class="stat-mini-val">98%</div><div class="stat-mini-lbl">Methodology accuracy</div></div>
+      <div><div class="stat-mini-val">ICAM + 5 Whys</div><div class="stat-mini-lbl">Frameworks applied</div></div>
     </div>
     <div class="stat-mini">
       <div class="stat-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg></div>
@@ -536,12 +680,12 @@
   <div class="s-inner">
     <div class="section-eyebrow">Why Safehub</div>
     <h2 class="section-title">AI investigation beats manual write-ups</h2>
-    <p class="section-sub">Not because it replaces investigators &mdash; because it gives them their afternoon back, and a more rigorous report at the end of it.</p>
+    <p class="section-sub">Not because it replaces investigators. Because it gives them their afternoon back, and a more rigorous first draft at the end of it.</p>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3>Dramatically faster</h3>
-        <p>Eliminate the 3&ndash;4 hour write-up. Generate a complete first draft from raw notes in under a minute.</p>
+        <p>Eliminate the 3&ndash;4 hour write-up. Generate a structured first draft from raw notes in under a minute.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
@@ -551,7 +695,7 @@
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6h10"/><path d="M11 12h10"/><path d="M11 18h10"/><path d="m3 7 1 1 2-2"/><path d="m3 13 1 1 2-2"/><path d="m3 19 1 1 2-2"/></svg></div>
         <h3>Structured every time</h3>
-        <p>Consistent application of 5 Whys, ICAM, Fishbone and Bow-Tie &mdash; every report, every site.</p>
+        <p>Consistent application of ICAM, 5 Whys, Fishbone and Bow-Tie on every report, every site.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
@@ -567,10 +711,10 @@
   <div class="stats-band">
     <div class="stats-bar">
       <div class="stats-grid">
-        <div class="stats-item"><div class="num">95%</div><div class="desc">Reduction in report-writing time</div></div>
-        <div class="stats-item"><div class="num">98%</div><div class="desc">Methodology accuracy vs. expert reviewers</div></div>
-        <div class="stats-item"><div class="num">6</div><div class="desc">Investigation frameworks supported</div></div>
-        <div class="stats-item"><div class="num">10k+</div><div class="desc">Incident reports generated</div></div>
+        <div class="stats-item"><div class="num">3.5h</div><div class="desc">Typical manual write-up time, now under a minute</div></div>
+        <div class="stats-item"><div class="num">ICAM</div><div class="desc">Australian standard for incident investigation, built in</div></div>
+        <div class="stats-item"><div class="num">5</div><div class="desc">Markets: AU, NZ, UK, CA, US with jurisdiction-aware outputs</div></div>
+        <div class="stats-item"><div class="num">Draft</div><div class="desc">First draft in seconds. You review, verify, and finalise.</div></div>
       </div>
     </div>
   </div>
@@ -581,11 +725,11 @@
   <div class="s-inner">
     <div class="section-eyebrow">Our Framework</div>
     <h2 class="section-title">A repeatable investigation in five steps</h2>
-    <p class="section-sub">Every Safehub investigation follows the same structured path &mdash; so every report meets the same standard, regardless of who initiates it.</p>
+    <p class="section-sub">Every Safehub investigation follows the same structured path. Every report meets the same standard, regardless of who initiates it.</p>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">01</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="timeline-content"><h3>Capture</h3><p>Ingest incident notes, witness statements, photos, equipment logs and site context &mdash; typed, spoken or uploaded.</p></div>
+        <div class="timeline-content"><h3>Capture</h3><p>Ingest incident notes, witness statements, photos, equipment logs and site context. Typed, spoken or uploaded.</p></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">02</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
@@ -593,11 +737,11 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-        <div class="timeline-content"><h3>Analyze</h3><p>Apply the right methodology &mdash; 5 Whys, ICAM, Fishbone or Bow-Tie &mdash; and surface root, contributing and systemic causes.</p></div>
+        <div class="timeline-content"><h3>Analyse</h3><p>Apply the right methodology: ICAM, 5 Whys, Fishbone or Bow-Tie. Surface contributing factors, systemic gaps, and absent defences.</p></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <div class="timeline-content"><h3>Recommend</h3><p>Generate ranked corrective actions mapped to the Hierarchy of Controls, with owners and target dates.</p></div>
+        <div class="timeline-content"><h3>Recommend</h3><p>Generate suggested corrective actions mapped to the Hierarchy of Controls, with owners and target dates. Always flagged as suggested pending site review.</p></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">05</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -611,10 +755,10 @@
 <section class="s" id="resources">
   <div class="section-eyebrow">Resources</div>
   <h2 class="section-title">The methodologies Safehub uses</h2>
-  <p class="section-sub">We don't invent a new investigation standard. We apply the ones HSE teams already trust &mdash; consistently and at speed.</p>
+  <p class="section-sub">We don't invent a new investigation standard. We apply the ones HSE teams already trust. Applied consistently and at speed.</p>
   <div class="resource-grid">
-    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="12" cy="19" r="3"/><path d="M5 8v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><path d="M12 13v3"/></svg></div><h3>5 Whys</h3><p>Iterative questioning to drill from symptom to underlying root cause.</p></div>
-    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg></div><h3>ICAM</h3><p>Incident Cause Analysis Method &mdash; separates absent/failed defences from individual and organisational factors.</p></div>
+    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="12" cy="19" r="3"/><path d="M5 8v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><path d="M12 13v3"/></svg></div><h3>5 Whys</h3><p>Iterative questioning to drill from the immediate event down to systemic contributing factors.</p></div>
+    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg></div><h3>ICAM</h3><p>Incident Cause Analysis Method. Separates absent/failed defences from individual and organisational factors.</p></div>
     <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/></svg></div><h3>Fishbone (Ishikawa)</h3><p>Categorical cause-and-effect mapping across people, process, equipment and environment.</p></div>
     <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Bow-Tie</h3><p>Visualises threats, top events, consequences, and the preventive and mitigative barriers between them.</p></div>
     <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg></div><h3>Hierarchy of Controls</h3><p>Ranks corrective actions from elimination through to PPE so the strongest controls come first.</p></div>
@@ -636,7 +780,7 @@
       </div>
     </div>
 
-    <div class="pricing-grid">
+    <div class="pricing-grid-4">
       <!-- FREE -->
       <div class="price-card">
         <div class="plan-name">Free</div>
@@ -647,7 +791,7 @@
         <ul class="plan-features">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 investigation report</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Full report depth</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> PDF download</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> PDF + Word download</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> All methodologies</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No credit card needed</li>
         </ul>
@@ -669,37 +813,20 @@
         </ul>
       </div>
 
-      <!-- PROFESSIONAL -->
-      <div class="price-card">
+      <!-- PROFESSIONAL — MOST POPULAR -->
+      <div class="price-card featured">
+        <div class="popular-badge">Most Popular</div>
         <div class="plan-name">Professional</div>
         <div class="plan-desc">For HSE teams managing investigations across multiple sites.</div>
         <div class="plan-price"><span class="amount" data-monthly="$249" data-annual="$207">$249</span><span class="period">/month</span></div>
         <div class="plan-per">$4.98 per report</div>
-        <button class="plan-btn primary">Choose Professional</button>
+        <button class="plan-btn">Choose Professional</button>
         <ul class="plan-features">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 50 investigations / month</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything in Starter</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Up to 5 team members</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Custom branding on reports</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Priority email support</li>
-        </ul>
-      </div>
-
-      <!-- BUSINESS -->
-      <div class="price-card featured">
-        <div class="popular-badge">Most popular</div>
-        <div class="plan-name">Business</div>
-        <div class="plan-desc">For mid-tier mining, construction & industrial operators.</div>
-        <div class="plan-price"><span class="amount" data-monthly="$599" data-annual="$499">$599</span><span class="period">/month</span></div>
-        <div class="plan-per">$3.00 per report</div>
-        <button class="plan-btn">Choose Business</button>
-        <ul class="plan-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 200 investigations / month</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything in Professional</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Up to 20 team members</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Industry-specific templates</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dedicated onboarding</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> API access</li>
         </ul>
       </div>
 
@@ -715,7 +842,6 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unlimited team members</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> SSO &amp; SCIM</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Custom integrations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Data residency options</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dedicated CSM &amp; SLA</li>
         </ul>
       </div>
@@ -728,22 +854,21 @@
   <div class="trust-inner">
     <div class="trust-left">
       <div class="eyebrow">Trust &amp; Accuracy</div>
-      <h2>Built to stand up in front of regulators</h2>
-      <p>Safehub is designed for incidents that matter. Every output is sourced, every step is logged, and every methodology is applied the way an experienced investigator would apply it &mdash; so the report holds up under scrutiny.</p>
+      <h2>A first draft you can actually work from</h2>
+      <p>Safehub is a structured starting point for investigations that matter. Every finding is tagged as FACT, INFERENCE, or PATTERN so you know exactly what to verify before you finalise.</p>
       <div class="badge-row">
-        <span class="compliance-badge"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> SOC 2</span>
-        <span class="compliance-badge"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> ISO 27001</span>
         <span class="compliance-badge"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> ISO 45001 aligned</span>
         <span class="compliance-badge"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> GDPR</span>
+        <span class="compliance-badge"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> AI data not used for training</span>
       </div>
     </div>
     <div class="trust-list">
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> End-to-end encryption for incident evidence and attachments</div>
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Full audit trail &mdash; every AI suggestion is sourced and reviewable</div>
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Methodology validated against expert HSE investigator reviews</div>
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Outputs structured for regulator and legal defensibility</div>
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Role-based access controls and SSO for enterprise teams</div>
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Data residency options for AU, EU and US deployments</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Encrypted in transit and at rest. Incident data never leaves your session unprotected</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Every finding tagged [FACT], [INFERENCE], or [PATTERN] so you know what still needs verification</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Information gaps listed explicitly in every report. Safehub tells you what it doesn't know</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Outputs structured to support regulator-facing investigations. Always review with your legal team before submitting</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Jurisdiction-aware regulatory references for AU, NZ, UK, CA, and US</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> No individual blame. Every analysis focuses on systemic and organisational factors</div>
     </div>
   </div>
 </div>
@@ -767,7 +892,7 @@
         <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <span>Safehub<span class="hq">HQ</span></span>
       </a>
-      <p>AI-driven HSE incident investigations and root-cause analysis, built with HSE professionals for HSE professionals.</p>
+      <p>AI-assisted HSE incident investigations. Structured first drafts for HSE professionals, built with HSE professionals.</p>
     </div>
     <div class="footer-col">
       <h4>Platform</h4>
@@ -829,7 +954,7 @@
       <div class="loading-step" data-label="Applying industry &amp; regulatory context"><span class="step-icon"></span><span class="step-text">Applying industry &amp; regulatory context</span><span class="step-time"></span></div>
       <div class="loading-step" data-label="Reconstructing incident sequence"><span class="step-icon"></span><span class="step-text">Reconstructing incident sequence</span><span class="step-time"></span></div>
       <div class="loading-step" data-label="Identifying immediate causes"><span class="step-icon"></span><span class="step-text">Identifying immediate causes</span><span class="step-time"></span></div>
-      <div class="loading-step" data-label="Running 5 Whys root cause analysis"><span class="step-icon"></span><span class="step-text">Running 5 Whys root cause analysis</span><span class="step-time"></span></div>
+      <div class="loading-step" data-label="Running 5 Whys causal chain analysis"><span class="step-icon"></span><span class="step-text">Running 5 Whys causal chain analysis</span><span class="step-time"></span></div>
       <div class="loading-step" data-label="Applying ICAM framework"><span class="step-icon"></span><span class="step-text">Applying ICAM framework</span><span class="step-time"></span></div>
       <div class="loading-step" data-label="Mapping contributing &amp; systemic factors"><span class="step-icon"></span><span class="step-text">Mapping contributing &amp; systemic factors</span><span class="step-time"></span></div>
       <div class="loading-step" data-label="Cross-referencing industry patterns"><span class="step-icon"></span><span class="step-text">Cross-referencing industry patterns</span><span class="step-time"></span></div>
@@ -856,6 +981,10 @@
           <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           PDF downloaded
         </div>
+        <button class="btn btn-word" onclick="downloadWord()" id="word-btn">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Word (.docx)
+        </button>
         <button class="btn btn-primary" onclick="downloadPDF()">
           <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PDF
@@ -872,6 +1001,7 @@
 </div>
 
 <script>
+// ============ NAVIGATION ============
 function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function goToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 function focusForm() {
@@ -885,20 +1015,103 @@ function focusForm() {
   }, 400);
 }
 
-// Sample mining incident
+// ============ COUNTRY / STATE ============
+const STATE_DATA = {
+  'Australia': ['ACT','NSW','NT','QLD','SA','TAS','VIC','WA'],
+  'New Zealand': [],
+  'United Kingdom': ['England','Scotland','Wales','Northern Ireland'],
+  'Canada': ['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'],
+  'United States': ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
+};
+
+function onCountryChange() {
+  const country = document.getElementById('hero-country').value;
+  const stateRow = document.getElementById('state-row');
+  const typeStandalone = document.getElementById('type-row-standalone');
+  const states = STATE_DATA[country] || [];
+
+  if (states.length > 0) {
+    const sel = document.getElementById('hero-state');
+    sel.innerHTML = '<option value="">Select...</option>' +
+      states.map(s => `<option value="${s}">${s}</option>`).join('');
+    stateRow.style.display = '';
+    typeStandalone.style.display = 'none';
+  } else {
+    stateRow.style.display = 'none';
+    typeStandalone.style.display = '';
+  }
+}
+
+// ============ CHIPS ============
+function toggleChip(el, group) {
+  el.classList.toggle('selected');
+}
+
+function selectFmt(el) {
+  document.querySelectorAll('.chip.fmt').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ============ FILE UPLOAD ============
+let uploadedFiles = [];
+
+function onFilesSelected(files) {
+  for (const f of files) {
+    if (!uploadedFiles.find(x => x.name === f.name && x.size === f.size)) {
+      uploadedFiles.push(f);
+    }
+  }
+  renderFileList();
+}
+
+function removeFile(name) {
+  uploadedFiles = uploadedFiles.filter(f => f.name !== name);
+  renderFileList();
+}
+
+function renderFileList() {
+  const list = document.getElementById('upload-files-list');
+  list.innerHTML = uploadedFiles.map(f =>
+    `<span class="upload-file-tag">${escapeHtml(f.name)} <span class="rm" onclick="removeFile('${escapeHtml(f.name)}')">&times;</span></span>`
+  ).join('');
+}
+
+// Drag-and-drop
+const uploadZone = document.getElementById('upload-zone');
+if (uploadZone) {
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    onFilesSelected(e.dataTransfer.files);
+  });
+}
+
+// ============ SAMPLE ============
 const SAMPLE_INCIDENT = "During night-shift maintenance on the conveyor head pulley at Pit 4, a maintenance fitter sustained a forearm laceration when a tensioning bar released unexpectedly while the isolation point was being verified. The crew had completed the SWMS pre-task briefing approximately 20 minutes prior. The fitter received first aid on-site from the lead hand and was transported to the medical centre for sutures. The conveyor remained isolated pending investigation. Two maintenance fitters and one supervisor were on the task. The incident occurred at approximately 02:30, four hours into the shift, in a poorly-lit section of the gallery. Witnesses reported the tensioning bar was not secondary-secured before the isolation verification step.";
 
 function loadSample() {
   document.getElementById('hero-description').value = SAMPLE_INCIDENT;
   document.getElementById('hero-industry').value = 'Mining';
-  document.getElementById('hero-type').value = 'Medical treatment';
+  document.getElementById('hero-country').value = 'Australia';
+  onCountryChange();
+  setTimeout(() => {
+    document.getElementById('hero-state').value = 'QLD';
+    document.getElementById('hero-type').value = 'Medical treatment';
+  }, 50);
+  // Pre-select relevant risk chips
+  document.querySelectorAll('.chip[data-risk]').forEach(c => {
+    const r = c.dataset.risk;
+    if (['Stored energy','Moving plant / machinery','Confined space'].includes(r)) c.classList.add('selected');
+  });
   const card = document.getElementById('try-card');
   card.style.transition = 'transform 0.4s ease';
   card.style.transform = 'scale(1.01)';
   setTimeout(() => { card.style.transform = 'scale(1)'; }, 400);
 }
 
-// Billing toggle
+// ============ BILLING TOGGLE ============
 function setBilling(mode) {
   document.getElementById('monthly-btn').classList.toggle('active', mode === 'monthly');
   document.getElementById('annual-btn').classList.toggle('active', mode === 'annual');
@@ -913,145 +1126,20 @@ function setBilling(mode) {
   });
 }
 
-let currentReport = null;
-
-// ============ 2-MINUTE INVESTIGATION ORCHESTRATOR ============
-// Each step has a list of "what the system is doing" sub-status messages
-// shown in rotation while the step is active. Total runtime ~120 seconds.
+// ============ ANALYSIS STEPS ANIMATION ============
 const ANALYSIS_STEPS = [
-  {
-    label: 'Parsing incident description',
-    duration: 7000,
-    messages: [
-      'Tokenising incident narrative...',
-      'Extracting actors, equipment and locations...',
-      'Identifying temporal markers and event sequence...',
-      'Detecting safety-critical keywords...'
-    ]
-  },
-  {
-    label: 'Applying industry & regulatory context',
-    duration: 9000,
-    messages: [
-      'Loading industry-specific hazard taxonomy...',
-      'Indexing applicable WHS Act sections...',
-      'Loading AS/NZS standards reference set...',
-      'Matching incident profile to industry pattern database...'
-    ]
-  },
-  {
-    label: 'Reconstructing incident sequence',
-    duration: 10000,
-    messages: [
-      'Building chronological event timeline...',
-      'Identifying critical decision points...',
-      'Inferring missing contextual details...',
-      'Cross-checking timeline against witness statements...',
-      'Establishing point of failure...'
-    ]
-  },
-  {
-    label: 'Identifying immediate causes',
-    duration: 11000,
-    messages: [
-      'Isolating proximate causal agents...',
-      'Distinguishing unsafe acts from unsafe conditions...',
-      'Verifying causal chain consistency...',
-      'Scoring confidence on each immediate cause...',
-      'Filtering inferences below confidence threshold...'
-    ]
-  },
-  {
-    label: 'Running 5 Whys root cause analysis',
-    duration: 14000,
-    messages: [
-      'Drilling layer 1: surface symptom...',
-      'Drilling layer 2: procedural mechanism...',
-      'Drilling layer 3: process gap...',
-      'Drilling layer 4: organisational driver...',
-      'Drilling layer 5: systemic root cause...',
-      'Validating chain logic — each "why" must follow from the last...'
-    ]
-  },
-  {
-    label: 'Applying ICAM framework',
-    duration: 14000,
-    messages: [
-      'Categorising absent and failed defences...',
-      'Analysing individual and team actions...',
-      'Mapping task and environmental conditions...',
-      'Identifying organisational factors...',
-      'Distinguishing latent from active failures...',
-      'Building ICAM defence-layer matrix...'
-    ]
-  },
-  {
-    label: 'Mapping contributing & systemic factors',
-    duration: 11000,
-    messages: [
-      'Surfacing latent system weaknesses...',
-      'Detecting fatigue, lighting, workload factors...',
-      'Identifying procedural and supervisory gaps...',
-      'Linking contributing factors to root causes...',
-      'Scoring systemic vs incidental influence...'
-    ]
-  },
-  {
-    label: 'Cross-referencing industry patterns',
-    duration: 10000,
-    messages: [
-      'Querying similar historical incidents...',
-      'Comparing causal pattern against industry benchmarks...',
-      'Surfacing recurrence indicators...',
-      'Flagging known critical-control failure modes...'
-    ]
-  },
-  {
-    label: 'Ranking corrective actions',
-    duration: 12000,
-    messages: [
-      'Generating candidate corrective actions...',
-      'Mapping each action to Hierarchy of Controls...',
-      'Tier 1 — Elimination opportunities...',
-      'Tier 2 — Engineering controls...',
-      'Tier 3 — Administrative controls...',
-      'Tier 4 — PPE controls...',
-      'Assigning owners and target timeframes...',
-      'Sorting by impact and feasibility...'
-    ]
-  },
-  {
-    label: 'Checking regulatory & compliance',
-    duration: 8000,
-    messages: [
-      'Cross-checking WHS Act reportable thresholds...',
-      'Verifying notifiable-incident triggers...',
-      'Matching against Safe Work Australia codes of practice...',
-      'Flagging due-diligence obligations...'
-    ]
-  },
-  {
-    label: 'Drafting investigation report',
-    duration: 9000,
-    messages: [
-      'Writing executive summary...',
-      'Composing incident description and sequence...',
-      'Structuring causal analysis sections...',
-      'Building corrective actions table...',
-      'Adding lessons learned...'
-    ]
-  },
-  {
-    label: 'Finalising & quality review',
-    duration: 5000,
-    messages: [
-      'Running consistency checks across sections...',
-      'Verifying every claim is sourced...',
-      'Calibrating language for defensibility...',
-      'Generating PDF-ready format...',
-      'Report ready.'
-    ]
-  }
+  { label: 'Parsing incident description', duration: 7000, messages: ['Tokenising incident narrative...','Extracting actors, equipment and locations...','Identifying temporal markers and event sequence...','Detecting safety-critical keywords...'] },
+  { label: 'Applying industry & regulatory context', duration: 9000, messages: ['Loading industry-specific hazard taxonomy...','Indexing applicable WHS legislation...','Matching incident profile to jurisdiction...','Cross-referencing industry pattern database...'] },
+  { label: 'Reconstructing incident sequence', duration: 10000, messages: ['Building chronological event timeline...','Identifying critical decision points...','Tagging facts vs inferences...','Establishing point of failure...'] },
+  { label: 'Identifying immediate causes', duration: 11000, messages: ['Isolating proximate causal agents...','Distinguishing unsafe acts from unsafe conditions...','Tagging each cause as [FACT] or [INFERENCE]...','Listing information gaps...'] },
+  { label: 'Running 5 Whys causal chain analysis', duration: 14000, messages: ['Drilling layer 1: surface event...','Drilling layer 2: procedural mechanism...','Drilling layer 3: process gap...','Drilling layer 4: organisational driver...','Drilling layer 5: systemic factor...','Validating chain logic...'] },
+  { label: 'Applying ICAM framework', duration: 14000, messages: ['Categorising absent and failed defences...','Analysing individual and team actions...','Mapping task and environmental conditions...','Identifying organisational factors...','Building ICAM defence-layer matrix...'] },
+  { label: 'Mapping contributing & systemic factors', duration: 11000, messages: ['Surfacing latent system weaknesses...','Detecting fatigue, lighting, workload factors...','Identifying procedural and supervisory gaps...','Linking contributing factors to systemic issues...'] },
+  { label: 'Cross-referencing industry patterns', duration: 10000, messages: ['Querying similar historical incidents...','Comparing causal pattern against industry benchmarks...','Surfacing recurrence indicators...','Flagging known critical-control failure modes...'] },
+  { label: 'Ranking suggested corrective actions', duration: 12000, messages: ['Generating candidate corrective actions...','Mapping each action to Hierarchy of Controls...','Elimination opportunities...','Engineering controls...','Administrative controls...','PPE controls...','Assigning suggested owners and timeframes...'] },
+  { label: 'Checking regulatory & compliance', duration: 8000, messages: ['Cross-checking jurisdiction-specific legislation...','Verifying notification triggers...','Matching against codes of practice...','Flagging due-diligence obligations...'] },
+  { label: 'Drafting investigation report', duration: 9000, messages: ['Writing executive summary...','Composing incident description and sequence...','Structuring causal analysis sections...','Building suggested actions table...','Adding lessons learned...'] },
+  { label: 'Finalising & quality review', duration: 5000, messages: ['Running consistency checks...','Verifying every claim is tagged...','Calibrating language for defensibility...','Report ready.'] }
 ];
 
 let analysisStartTime = 0;
@@ -1065,39 +1153,25 @@ function formatElapsed(ms) {
 }
 
 function clearAnalysisTimers() {
-  analysisTimers.forEach(t => clearTimeout(t));
-  analysisTimers.forEach(t => clearInterval(t));
+  analysisTimers.forEach(t => { clearTimeout(t); clearInterval(t); });
   analysisTimers = [];
 }
 
-function generateAnalysis() {
-  const desc = document.getElementById('hero-description').value.trim();
-  const industry = document.getElementById('hero-industry').value;
-  const type = document.getElementById('hero-type').value;
-  if (!desc || !industry || !type) {
-    alert('Please describe what happened and select an industry and incident type to continue.');
-    return;
-  }
-
-  const loading = document.getElementById('loading');
-  loading.classList.add('active');
-
+function runAnimation(onComplete) {
   const steps = document.querySelectorAll('.loading-step');
-  steps.forEach(s => {
-    s.classList.remove('active', 'done');
-    s.querySelector('.step-time').textContent = '';
-  });
+  steps.forEach(s => { s.classList.remove('active', 'done'); s.querySelector('.step-time').textContent = ''; });
 
   const totalDuration = ANALYSIS_STEPS.reduce((sum, s) => sum + s.duration, 0);
   analysisStartTime = Date.now();
 
-  // Elapsed-time + progress ticker (updates every 200ms)
   const elapsedEl = document.getElementById('elapsed-time');
   const pctEl = document.getElementById('progress-pct');
   const fillEl = document.getElementById('progress-fill');
+  const substatusEl = document.getElementById('substatus-text');
+
   const tickInterval = setInterval(() => {
     const elapsed = Date.now() - analysisStartTime;
-    const pct = Math.min(100, (elapsed / totalDuration) * 100);
+    const pct = Math.min(99, (elapsed / totalDuration) * 100);
     elapsedEl.textContent = formatElapsed(elapsed);
     pctEl.textContent = Math.floor(pct) + '%';
     fillEl.style.width = pct + '%';
@@ -1105,38 +1179,27 @@ function generateAnalysis() {
   }, 200);
   analysisTimers.push(tickInterval);
 
-  const substatusEl = document.getElementById('substatus-text');
-
   let accumulated = 0;
   ANALYSIS_STEPS.forEach((step, idx) => {
     const stepStart = accumulated;
     const stepEnd = accumulated + step.duration;
     const stepEl = steps[idx];
 
-    // Start of step — mark previous done, this one active
     const startTimer = setTimeout(() => {
-      for (let i = 0; i < idx; i++) {
-        steps[i].classList.remove('active');
-        steps[i].classList.add('done');
-      }
+      for (let i = 0; i < idx; i++) { steps[i].classList.remove('active'); steps[i].classList.add('done'); }
       stepEl.classList.add('active');
-
-      // Rotate sub-status messages within this step
       const msgInterval = step.duration / step.messages.length;
       step.messages.forEach((msg, mi) => {
-        const mt = setTimeout(() => {
-          substatusEl.textContent = msg;
-        }, mi * msgInterval);
+        const mt = setTimeout(() => { substatusEl.textContent = msg; }, mi * msgInterval);
         analysisTimers.push(mt);
       });
     }, stepStart);
     analysisTimers.push(startTimer);
 
-    // End of step — record completion time
     const endTimer = setTimeout(() => {
       stepEl.classList.remove('active');
       stepEl.classList.add('done');
-      const elapsedAtStep = (stepEnd / 1000);
+      const elapsedAtStep = stepEnd / 1000;
       const m = Math.floor(elapsedAtStep / 60);
       const s = Math.floor(elapsedAtStep % 60);
       stepEl.querySelector('.step-time').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
@@ -1146,38 +1209,116 @@ function generateAnalysis() {
     accumulated = stepEnd;
   });
 
-  // Final reveal — close loader, open report
   const finalTimer = setTimeout(() => {
     clearAnalysisTimers();
-    loading.classList.remove('active');
-    showReport(desc, industry, type);
-  }, totalDuration + 400);
+    onComplete();
+  }, totalDuration);
   analysisTimers.push(finalTimer);
 }
 
-function showReport(desc, industry, type) {
-  const isMiningSample = desc === SAMPLE_INCIDENT;
-  const reportData = isMiningSample ? getMiningSampleReport() : getGenericReport(desc, industry, type);
-  currentReport = reportData;
-  document.getElementById('report-body').innerHTML = renderReport(reportData, industry, type);
-  document.getElementById('report-overlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+// ============ MAIN GENERATE FUNCTION ============
+let currentReport = null;
+let currentOutputFormat = 'pdf';
 
-  // Auto-download the PDF after the modal renders.
-  // Slight delay so the user sees the report appear before the download triggers.
-  setTimeout(() => {
-    try {
-      downloadPDF();
-      const notice = document.getElementById('download-notice');
-      if (notice) {
-        notice.style.display = 'inline-flex';
-        // Auto-hide after a few seconds
-        setTimeout(() => { notice.style.display = 'none'; }, 4000);
-      }
-    } catch (e) {
-      console.error('Auto PDF download failed:', e);
+async function generateAnalysis() {
+  const desc = document.getElementById('hero-description').value.trim();
+  const industry = document.getElementById('hero-industry').value;
+  const country = document.getElementById('hero-country').value;
+
+  // Get incident type from whichever field is visible
+  const stateRow = document.getElementById('state-row');
+  const incidentType = stateRow.style.display !== 'none'
+    ? document.getElementById('hero-type').value
+    : document.getElementById('hero-type-single').value;
+
+  const state = document.getElementById('hero-state').value;
+
+  const risks = [...document.querySelectorAll('#risk-chips .chip.selected, .chip.hpi.selected')]
+    .map(c => c.dataset.risk).filter(Boolean);
+
+  const hpiSif = document.querySelector('.chip.hpi.selected') !== null;
+
+  const fmt = document.querySelector('.chip.fmt.selected');
+  currentOutputFormat = fmt ? fmt.dataset.fmt : 'pdf';
+
+  if (!desc || !industry || !incidentType || !country) {
+    alert('Please fill in: what happened, industry, incident type, and country.');
+    return;
+  }
+
+  const loading = document.getElementById('loading');
+  loading.classList.add('active');
+
+  let apiResult = null;
+  let animDone = false;
+  let apiError = null;
+
+  // Build FormData
+  const formData = new FormData();
+  formData.append('description', desc);
+  formData.append('industry', industry);
+  formData.append('incidentType', incidentType);
+  formData.append('country', country);
+  formData.append('state', state);
+  formData.append('risks', JSON.stringify(risks));
+  formData.append('hpiSif', String(hpiSif));
+  uploadedFiles.forEach(f => formData.append('files', f));
+
+  // Start API call
+  fetch('/api/analyse', { method: 'POST', body: formData })
+    .then(r => r.json())
+    .then(data => {
+      if (data.error) throw new Error(data.error);
+      apiResult = data.report;
+      if (animDone) finishAndShow();
+      else document.getElementById('substatus-text').textContent = 'Analysis complete, finalising report...';
+    })
+    .catch(err => {
+      apiError = err.message;
+      clearAnalysisTimers();
+      loading.classList.remove('active');
+      alert('Investigation failed: ' + err.message + '\n\nCheck that ANTHROPIC_API_KEY is set in Vercel environment variables.');
+    });
+
+  // Start animation — when done, check if API is also done
+  runAnimation(() => {
+    animDone = true;
+    if (apiResult !== null) {
+      finishAndShow();
+    } else if (!apiError) {
+      // API still running — keep loading visible
+      document.getElementById('substatus-text').textContent = 'Finalising report...';
+      document.getElementById('progress-pct').textContent = '99%';
+      document.getElementById('progress-fill').style.width = '99%';
+      // Poll until API resolves
+      const waitInterval = setInterval(() => {
+        if (apiResult !== null) { clearInterval(waitInterval); finishAndShow(); }
+        if (apiError) { clearInterval(waitInterval); }
+      }, 300);
     }
-  }, 800);
+  });
+
+  function finishAndShow() {
+    clearAnalysisTimers();
+    loading.classList.remove('active');
+    if (!apiResult) return;
+    currentReport = apiResult;
+    document.getElementById('report-body').innerHTML = renderReport(apiResult);
+    document.getElementById('report-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+      try {
+        if (currentOutputFormat === 'pdf' || currentOutputFormat === 'both') downloadPDF();
+        if (currentOutputFormat === 'word' || currentOutputFormat === 'both') downloadWord();
+        const notice = document.getElementById('download-notice');
+        if (notice) {
+          notice.style.display = 'inline-flex';
+          setTimeout(() => { notice.style.display = 'none'; }, 4000);
+        }
+      } catch (e) { console.error('Auto-download failed:', e); }
+    }, 800);
+  }
 }
 
 function closeReport() {
@@ -1185,242 +1326,134 @@ function closeReport() {
   document.body.style.overflow = '';
 }
 
-function getMiningSampleReport() {
-  return {
-    refId: 'SHQ-' + Date.now().toString().slice(-6),
-    date: new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }),
-    location: 'Pit 4, Underground Gallery',
-    incidentTime: '02:30, Night Shift',
-    industry: 'Mining',
-    type: 'Medical Treatment Injury',
-    severity: 'Medium',
-    description: "During night-shift maintenance on the conveyor head pulley at Pit 4, a maintenance fitter sustained a forearm laceration when a tensioning bar released unexpectedly while the isolation point was being verified. The crew had completed the SWMS pre-task briefing approximately 20 minutes prior. The fitter received first aid on-site from the lead hand and was transported to the medical centre for sutures. The conveyor remained isolated pending investigation.",
-    execSummary: "A maintenance fitter sustained a forearm laceration requiring medical treatment during night-shift conveyor maintenance at Pit 4. The injury occurred when a tensioning bar released unexpectedly during isolation verification. Investigation identified procedural gaps in stored energy management and secondary securing requirements, compounded by fatigue and inadequate task lighting. Three immediate causes and four systemic contributing factors were identified. Twelve corrective actions are recommended, ranked by the Hierarchy of Controls.",
-    keyNumbers: [
-      { val: '3', lbl: 'Immediate causes' },
-      { val: '4', lbl: 'Contributing factors' },
-      { val: '12', lbl: 'Corrective actions' }
-    ],
-    sequence: "At approximately 02:30, four hours into a 12-hour night shift, two maintenance fitters and one supervisor commenced scheduled tensioning maintenance on the conveyor head pulley at Pit 4. A SWMS briefing had been conducted at 02:10 prior to task commencement. The tensioning bar was positioned but not secondary-secured. As the isolation point was being verified by the lead fitter, the tensioning bar released under stored energy, striking the second fitter's forearm and causing a laceration. First aid was administered on-site and the injured worker was transported to the medical centre for sutures. The conveyor was placed under isolation pending investigation.",
-    immediateCauses: [
-      "Tensioning bar was not secondary-secured prior to isolation verification step",
-      "Stored mechanical energy was not fully dissipated before personnel entered the work envelope",
-      "Verification step was performed within the line-of-fire of the unsecured tensioning component"
-    ],
-    contributingFactors: [
-      "SWMS step sequence did not explicitly require secondary securing prior to isolation checks",
-      "Night shift fatigue — incident occurred 4 hours into the shift, a known elevated-risk window",
-      "Task lighting in the gallery section was below site standard, reducing situational awareness",
-      "Recent crew rotation meant the second fitter had performed this specific task only twice prior"
-    ],
-    fiveWhys: [
-      { why: 'Why did the fitter sustain a laceration?', because: 'The tensioning bar released and struck their forearm.' },
-      { why: 'Why did the tensioning bar release?', because: 'Stored mechanical energy was not fully dissipated and the bar was not secondary-secured.' },
-      { why: 'Why was the bar not secondary-secured?', because: 'The SWMS step sequence did not explicitly require secondary securing prior to isolation verification.' },
-      { why: 'Why did the SWMS not require this step?', because: 'The procedure was last reviewed in 2023 and pre-dated the site\'s updated stored-energy management standard.' },
-      { why: 'Why had the SWMS not been updated to current standard?', because: 'No systematic SWMS review schedule exists to align procedures with evolving site standards — this is the systemic root cause.' }
-    ],
-    rootCauses: [
-      { 
-        title: 'Procedural — SWMS Currency Gap',
-        detail: 'The SWMS for conveyor tensioning has not been reviewed against current site standards since 2023, creating a structural mismatch between documented procedure and required practice.'
-      },
-      {
-        title: 'Organisational — No Periodic SWMS Review Cycle',
-        detail: 'The site lacks a formal cadence for reviewing SWMS documents against evolving standards, codes of practice, and incident learnings. This is the deepest contributing cause.'
-      },
-      {
-        title: 'Environmental — Sub-Standard Task Lighting',
-        detail: 'Gallery section lighting did not meet the site\'s minimum standard for maintenance tasks, reducing visual cues that may have prompted the secondary securing step.'
-      }
-    ],
-    icam: {
-      defences: ['SWMS step sequence missing secondary-securing requirement', 'No physical guard or interlock preventing tensioning bar movement during verification', 'Task lighting below site standard'],
-      individual: ['Verification step performed within line-of-fire of unsecured component', 'Limited prior experience with this specific task (recent crew rotation)'],
-      task: ['Stored energy not fully dissipated', 'Tensioning bar not secondary-secured', 'Task performed during fatigue-elevated window (4hrs into night shift)'],
-      organisational: ['No periodic SWMS review schedule', 'Lighting standards not enforced on routine maintenance audits', 'Crew rotation practices do not track task-specific proficiency']
-    },
-    correctiveActions: [
-      { tier: 'Elimination', action: 'Engineer out manual tensioning where feasible — assess automated tensioning systems for retrofit on conveyors >800mm', owner: 'Maintenance Engineering Manager', due: '90 days' },
-      { tier: 'Engineering', action: 'Install physical bar guards or interlocks on all conveyor tensioning points across site', owner: 'Maintenance Engineering Manager', due: '60 days' },
-      { tier: 'Engineering', action: 'Upgrade gallery lighting to meet site minimum standard for maintenance areas', owner: 'Site Services Supervisor', due: '30 days' },
-      { tier: 'Administrative', action: 'Update conveyor tensioning SWMS to explicitly require secondary securing before any isolation verification', owner: 'HSE Manager', due: '14 days' },
-      { tier: 'Administrative', action: 'Establish annual SWMS review schedule for all critical maintenance procedures', owner: 'HSE Manager', due: '30 days' },
-      { tier: 'Administrative', action: 'Add stored-energy verification step to pre-task briefing checklist', owner: 'Maintenance Supervisor', due: '14 days' },
-      { tier: 'Administrative', action: 'Implement task-specific proficiency tracking for rotational crews', owner: 'Operations Manager', due: '60 days' },
-      { tier: 'Administrative', action: 'Conduct toolbox stand-down across all maintenance crews on stored-energy management', owner: 'Maintenance Supervisor', due: '7 days' },
-      { tier: 'Administrative', action: 'Review fatigue-risk profile for tasks performed in 02:00–04:00 window', owner: 'HSE Manager', due: '45 days' },
-      { tier: 'Administrative', action: 'Audit all SWMS against current stored-energy management standard', owner: 'HSE Manager', due: '90 days' },
-      { tier: 'PPE', action: 'Confirm cut-resistant sleeve PPE is mandatory for tensioning tasks and stocked at all maintenance points', owner: 'Site Services Supervisor', due: '14 days' },
-      { tier: 'PPE', action: 'Issue site-wide notice reminding workers of line-of-fire awareness on stored-energy tasks', owner: 'HSE Manager', due: '7 days' }
-    ],
-    lessonsLearned: [
-      "Procedures must be living documents. A SWMS is only as protective as its last review against current standards — a periodic review cycle is essential.",
-      "Stored energy management is a critical-risk topic that deserves specific procedural treatment, not embedding within general isolation procedures.",
-      "Night-shift maintenance windows carry elevated fatigue risk that compounds with procedural ambiguity — these tasks deserve additional verification controls.",
-      "Crew rotation introduces task-specific proficiency variance that is not currently tracked — a gap that affects more than this one task."
-    ],
-    regulatory: "This incident is reportable under Section 38 of the Work Health and Safety Act 2011 (medical treatment injury). The investigation findings align with WHS Mining Regulations Part 5 (principal hazard management — fires, mechanical hazards) and AS/NZS 4024.1 isolation hierarchy requirements. No prosecution risk identified pending closure of priority corrective actions within 30 days."
-  };
-}
+// ============ REPORT RENDERING ============
+function renderReport(r) {
+  const industry = r.industry || '';
+  const type = r.type || '';
+  const keyNums = [
+    { val: String((r.immediateCauses || []).length), lbl: 'Immediate causes' },
+    { val: String((r.contributingFactors || []).length), lbl: 'Contributing factors' },
+    { val: String((r.suggestedCorrectiveActions || r.correctiveActions || []).length), lbl: 'Suggested actions' }
+  ];
 
-function getGenericReport(desc, industry, type) {
-  return {
-    refId: 'SHQ-' + Date.now().toString().slice(-6),
-    date: new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }),
-    location: 'Site location not specified',
-    incidentTime: 'Time not specified',
-    industry: industry,
-    type: type,
-    severity: 'To be determined',
-    description: desc,
-    execSummary: "This investigation report has been auto-generated by Safehub HQ based on the incident details provided. In the production version connected to the Anthropic Claude API, this section would contain a fully contextualised executive summary tailored to your specific industry, incident type, and the details you provided. The structure below shows the depth of analysis Safehub delivers for every incident.",
-    keyNumbers: [
-      { val: '—', lbl: 'Immediate causes' },
-      { val: '—', lbl: 'Contributing factors' },
-      { val: '—', lbl: 'Corrective actions' }
-    ],
-    sequence: "In the production version, this section would reconstruct the incident sequence from your description, organising events chronologically and identifying critical decision points. Try the sample incident to see a full worked example.",
-    immediateCauses: [
-      'In the production version, immediate causes specific to your incident would appear here',
-      'Each cause would be linked to a specific element of your incident description',
-      'Confidence scoring would indicate how strongly the AI inferred each cause'
-    ],
-    contributingFactors: [
-      'Systemic and environmental factors that enabled the immediate causes',
-      'Each factor categorised against ICAM dimensions',
-      'Cross-referenced to industry-specific known patterns'
-    ],
-    fiveWhys: [
-      { why: 'Why did this incident occur?', because: 'The production version traces backward through 5 layers of causation to surface the systemic root cause.' },
-      { why: 'Why does that condition exist?', because: 'Each "why" drives deeper into procedural, organisational, and systemic factors.' },
-      { why: 'Why has this not been addressed?', because: 'The chain continues until a true root cause emerges.' },
-      { why: 'Why is the underlying gap present?', because: 'Each step builds the audit trail regulators expect to see.' },
-      { why: 'Why is this not visible to management?', because: 'The deepest cause is usually organisational — a missing system, schedule, or process.' }
-    ],
-    rootCauses: [
-      { title: 'Procedural root cause', detail: 'In the production version, the specific procedural gap traced through your 5 Whys would be detailed here.' },
-      { title: 'Organisational root cause', detail: 'The systemic, deepest-layer cause that allowed the procedural gap to persist.' },
-      { title: 'Environmental or contextual factor', detail: 'Conditions that elevated risk on the day of the incident.' }
-    ],
-    icam: {
-      defences: ['Absent or failed defences specific to your incident would be listed here'],
-      individual: ['Individual or team actions that contributed to the event'],
-      task: ['Task and environmental conditions identified from your description'],
-      organisational: ['Systemic and organisational factors — usually the deepest causes']
-    },
-    correctiveActions: [
-      { tier: 'Elimination', action: 'Highest-order controls — eliminating the hazard at source', owner: 'Senior leadership', due: '90 days' },
-      { tier: 'Engineering', action: 'Physical or design controls to isolate the hazard', owner: 'Engineering team', due: '60 days' },
-      { tier: 'Administrative', action: 'Procedural updates, training, and verification steps', owner: 'HSE Manager', due: '30 days' },
-      { tier: 'PPE', action: 'Personal protective equipment as the final layer', owner: 'Site supervision', due: '14 days' }
-    ],
-    lessonsLearned: [
-      "The production version surfaces 3-5 specific lessons tailored to your incident.",
-      "Each lesson is linked to specific corrective actions for closure tracking.",
-      "Lessons are framed for cross-site applicability where relevant.",
-      "Try the sample mining incident to see realistic lesson-learned output."
-    ],
-    regulatory: "In the production version, this section identifies reportable obligations under your jurisdiction's WHS Act, references applicable codes of practice and Australian Standards, and flags notifiable-incident triggers."
-  };
-}
+  const icam = r.icam || {};
+  const defences = icam.absentFailedDefences || icam.defences || [];
+  const individual = icam.individualTeamActions || icam.individual || [];
+  const task = icam.taskEnvironmentalConditions || icam.task || [];
+  const org = icam.organisationalFactors || icam.organisational || [];
 
-function renderReport(r, industry, type) {
+  const systemicFindings = r.systemicFindings || r.rootCauses || [];
+  const correctiveActions = r.suggestedCorrectiveActions || r.correctiveActions || [];
+  const infoGaps = r.informationGaps || [];
+
   return `
+    <div class="draft-banner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      DRAFT: AI-generated first draft. Review all findings with your investigation team before finalising.
+    </div>
+
     <div class="rep-cover">
       <div class="rep-eyebrow">Investigation Report</div>
-      <h1>${escapeHtml(industry)} &mdash; ${escapeHtml(type)}</h1>
+      <h1>${escapeHtml(industry)}: ${escapeHtml(type)}</h1>
       <div class="meta">
         <span>Ref<strong>${r.refId}</strong></span>
         <span>Date<strong>${r.date}</strong></span>
         <span>Industry<strong>${escapeHtml(industry)}</strong></span>
+        ${r.country ? `<span>Country<strong>${escapeHtml(r.country)}${r.state ? ', ' + escapeHtml(r.state) : ''}</strong></span>` : ''}
       </div>
     </div>
 
     <div class="rep-section">
       <div class="rep-section-head"><span class="rep-section-num">1</span><span class="rep-section-title">Executive Summary</span></div>
-      <p>${escapeHtml(r.execSummary)}</p>
+      <p>${escapeHtml(r.executiveSummary || r.execSummary || '')}</p>
       <div class="rep-numbers">
-        ${r.keyNumbers.map(n => `<div class="rep-num-card"><div class="rep-num-val">${n.val}</div><div class="rep-num-lbl">${n.lbl}</div></div>`).join('')}
+        ${keyNums.map(n => `<div class="rep-num-card"><div class="rep-num-val">${n.val}</div><div class="rep-num-lbl">${n.lbl}</div></div>`).join('')}
       </div>
     </div>
 
     <div class="rep-section">
       <div class="rep-section-head"><span class="rep-section-num">2</span><span class="rep-section-title">Incident Description &amp; Sequence</span></div>
       <p><strong>Reported description:</strong></p>
-      <p>${escapeHtml(r.description)}</p>
+      <p>${escapeHtml(r.description || '')}</p>
       <p style="margin-top:16px;"><strong>Reconstructed sequence:</strong></p>
-      <p>${escapeHtml(r.sequence)}</p>
+      <p>${escapeHtml(r.incidentSequence || r.sequence || '')}</p>
     </div>
 
     <div class="rep-section">
       <div class="rep-section-head"><span class="rep-section-num">3</span><span class="rep-section-title">Immediate Causes</span></div>
-      <p class="small-muted">Direct actions and conditions that led to the incident.</p>
-      ${r.immediateCauses.map((c, i) => `<div class="rep-callout"><strong>Cause ${i+1}</strong><p>${escapeHtml(c)}</p></div>`).join('')}
+      <p class="small-muted">Direct actions and conditions that immediately preceded the incident.</p>
+      ${(r.immediateCauses || []).map((c, i) => `<div class="rep-callout"><strong>Cause ${i+1}</strong><p>${escapeHtml(c)}</p></div>`).join('')}
     </div>
 
     <div class="rep-section">
       <div class="rep-section-head"><span class="rep-section-num">4</span><span class="rep-section-title">Contributing Factors</span></div>
       <p class="small-muted">Conditions that increased the likelihood or severity of the incident.</p>
-      ${r.contributingFactors.map((f, i) => `<div class="rep-callout"><strong>Factor ${i+1}</strong><p>${escapeHtml(f)}</p></div>`).join('')}
+      ${(r.contributingFactors || []).map((f, i) => `<div class="rep-callout"><strong>Factor ${i+1}</strong><p>${escapeHtml(f)}</p></div>`).join('')}
     </div>
 
+    ${infoGaps.length > 0 ? `
     <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">5</span><span class="rep-section-title">5 Whys Root Cause Chain</span></div>
-      <p class="small-muted">Iterative drilling from symptom to systemic root cause.</p>
+      <div class="rep-section-head"><span class="rep-section-num">5</span><span class="rep-section-title">Information Gaps</span></div>
+      <p class="small-muted">Items the investigator still needs to confirm before finalising.</p>
+      ${infoGaps.map(g => `<div class="rep-gap-item"><svg class="rep-gap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>${escapeHtml(g)}</div>`).join('')}
+    </div>` : ''}
+
+    <div class="rep-section">
+      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 6 : 5}</span><span class="rep-section-title">Causal Chain Analysis (5 Whys)</span></div>
+      <p class="small-muted">Iterative causal chain drilling from immediate event to systemic factors.</p>
       <div class="rep-whys">
-        ${r.fiveWhys.map((w, i) => `<div class="rep-why-item"><div class="rep-why-num">Why ${i+1}</div><div class="rep-why-content"><strong>${escapeHtml(w.why)}</strong><br>${escapeHtml(w.because)}</div></div>`).join('')}
+        ${(r.fiveWhys || []).map((w, i) => `<div class="rep-why-item"><div class="rep-why-num">Why ${i+1}</div><div class="rep-why-content"><strong>${escapeHtml(w.why)}</strong><br>${escapeHtml(w.because)}</div></div>`).join('')}
       </div>
     </div>
 
     <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">6</span><span class="rep-section-title">ICAM Analysis</span></div>
-      <p class="small-muted">Incident Cause Analysis Method &mdash; categorising causes across four systemic layers.</p>
+      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 7 : 6}</span><span class="rep-section-title">ICAM Analysis</span></div>
+      <p class="small-muted">Incident Cause Analysis Method. Categorising factors across four systemic layers.</p>
       <div class="rep-icam-grid">
-        <div class="rep-icam-card"><h4>Absent / Failed Defences</h4><ul>${r.icam.defences.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
-        <div class="rep-icam-card"><h4>Individual / Team Actions</h4><ul>${r.icam.individual.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
-        <div class="rep-icam-card"><h4>Task / Environmental Conditions</h4><ul>${r.icam.task.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
-        <div class="rep-icam-card"><h4>Organisational Factors</h4><ul>${r.icam.organisational.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
+        <div class="rep-icam-card"><h4>Absent / Failed Defences</h4><ul>${defences.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
+        <div class="rep-icam-card"><h4>Individual / Team Actions</h4><ul>${individual.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
+        <div class="rep-icam-card"><h4>Task / Environmental Conditions</h4><ul>${task.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
+        <div class="rep-icam-card"><h4>Organisational Factors</h4><ul>${org.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>
       </div>
     </div>
 
     <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">7</span><span class="rep-section-title">Root Causes</span></div>
-      <p class="small-muted">The systemic issues that, if addressed, prevent recurrence.</p>
-      ${r.rootCauses.map((rc, i) => `<div class="rep-callout"><strong>Root cause ${i+1} &mdash; ${escapeHtml(rc.title)}</strong><p>${escapeHtml(rc.detail)}</p></div>`).join('')}
+      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 8 : 7}</span><span class="rep-section-title">Systemic Findings</span></div>
+      <p class="small-muted">Organisational and systemic factors identified through investigation.</p>
+      ${systemicFindings.map((f, i) => `<div class="rep-callout"><strong>Finding ${i+1}: ${escapeHtml(f.title)}</strong><p>${escapeHtml(f.detail)}</p></div>`).join('')}
     </div>
 
     <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">8</span><span class="rep-section-title">Corrective Actions</span></div>
-      <p class="small-muted">Ranked by Hierarchy of Controls &mdash; strongest controls first.</p>
+      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 9 : 8}</span><span class="rep-section-title">Suggested Corrective Actions</span></div>
+      <p class="small-muted">Suggested based on the information provided. Confirm feasibility with site teams before implementing.</p>
       <table class="rep-action-table">
-        <thead><tr><th>Tier</th><th>Action</th><th>Owner</th><th>Due</th></tr></thead>
+        <thead><tr><th>Tier</th><th>Suggested Action</th><th>Owner</th><th>Due</th></tr></thead>
         <tbody>
-          ${r.correctiveActions.map(a => `<tr><td><span class="priority-badge ${tierClass(a.tier)}">${a.tier}</span></td><td>${escapeHtml(a.action)}</td><td>${escapeHtml(a.owner)}</td><td>${escapeHtml(a.due)}</td></tr>`).join('')}
+          ${correctiveActions.map(a => `<tr><td><span class="priority-badge ${tierClass(a.tier)}">${a.tier}</span></td><td>${escapeHtml(a.action)}</td><td>${escapeHtml(a.owner)}</td><td>${escapeHtml(a.due)}</td></tr>`).join('')}
         </tbody>
       </table>
     </div>
 
     <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">9</span><span class="rep-section-title">Lessons Learned</span></div>
-      <p class="small-muted">Cross-site applicable insights for prevention.</p>
-      ${r.lessonsLearned.map((l, i) => `<div class="rep-callout"><strong>Lesson ${i+1}</strong><p>${escapeHtml(l)}</p></div>`).join('')}
+      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 10 : 9}</span><span class="rep-section-title">Lessons Learned</span></div>
+      <p class="small-muted">Cross-site applicable insights for preventing recurrence.</p>
+      ${(r.lessonsLearned || []).map((l, i) => `<div class="rep-callout"><strong>Lesson ${i+1}</strong><p>${escapeHtml(l)}</p></div>`).join('')}
     </div>
 
     <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">10</span><span class="rep-section-title">Regulatory &amp; Compliance Notes</span></div>
-      <p>${escapeHtml(r.regulatory)}</p>
+      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 11 : 10}</span><span class="rep-section-title">Regulatory &amp; Compliance Notes</span></div>
+      <p>${escapeHtml(r.regulatoryNotes || r.regulatory || '')}</p>
     </div>
 
     <div class="rep-footer">
-      <div><span class="logo-small">Safehub<span class="hq">HQ</span></span> &nbsp;&middot;&nbsp; AI-generated draft, reviewed and refined by HSE professionals</div>
+      <div><span class="logo-small">Safehub<span class="hq">HQ</span></span> &nbsp;&middot;&nbsp; AI-generated first draft. Review and verify before finalising</div>
       <div>Generated ${r.date} &middot; Ref ${r.refId}</div>
     </div>
   `;
 }
 
 function tierClass(tier) {
-  const t = tier.toLowerCase();
+  const t = (tier || '').toLowerCase();
   if (t.includes('elim')) return 'priority-elim';
   if (t.includes('engineer')) return 'priority-eng';
   if (t.includes('admin')) return 'priority-admin';
@@ -1432,7 +1465,37 @@ function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-// PDF generation
+// ============ WORD DOWNLOAD ============
+async function downloadWord() {
+  if (!currentReport) return;
+  const btn = document.getElementById('word-btn');
+  if (btn) { btn.textContent = 'Generating...'; btn.disabled = true; }
+  try {
+    const response = await fetch('/api/generate-docx', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ report: currentReport })
+    });
+    if (!response.ok) throw new Error('Word generation failed: status ' + response.status);
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Safehub-Investigation-' + (currentReport.refId || 'Report') + '.docx';
+    a.click();
+    URL.revokeObjectURL(url);
+  } catch (e) {
+    console.error('Word download error:', e);
+    alert('Word download failed: ' + e.message);
+  } finally {
+    if (btn) {
+      btn.innerHTML = '<svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Word (.docx)';
+      btn.disabled = false;
+    }
+  }
+}
+
+// ============ PDF DOWNLOAD ============
 function downloadPDF() {
   if (!currentReport) return;
   const r = currentReport;
@@ -1449,302 +1512,223 @@ function downloadPDF() {
   const INK = [10, 14, 26];
   const MUTED = [91, 100, 120];
   const SOFT = [243, 246, 253];
+  const AMBER_BG = [255, 251, 235];
+  const AMBER_TEXT = [146, 64, 14];
 
   function checkPage(needed = 10) {
-    if (y + needed > pageH - margin) {
-      addFooter();
-      doc.addPage();
-      y = margin;
-    }
+    if (y + needed > pageH - margin) { addFooter(); doc.addPage(); y = margin; }
   }
 
   function addFooter() {
-    doc.setFontSize(8);
-    doc.setTextColor(...MUTED);
-    doc.text('Safehub HQ Investigation Report  •  ' + r.refId + '  •  ' + r.date, margin, pageH - 8);
+    doc.setFontSize(8); doc.setTextColor(...MUTED);
+    doc.text('Safehub HQ Investigation Report  \u2022  ' + r.refId + '  \u2022  ' + r.date, margin, pageH - 8);
     doc.text('Page ' + doc.internal.getNumberOfPages(), pageW - margin, pageH - 8, { align: 'right' });
   }
 
-  function h1(text) {
-    checkPage(16);
-    doc.setFontSize(20);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...INK);
-    doc.text(text, margin, y);
-    y += 9;
-  }
-
   function h2(num, text) {
-    checkPage(14);
-    y += 4;
-    // Number badge
-    doc.setFillColor(...BLUE);
-    doc.roundedRect(margin, y - 4, 7, 7, 1.5, 1.5, 'F');
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(255, 255, 255);
+    checkPage(14); y += 4;
+    doc.setFillColor(...BLUE); doc.roundedRect(margin, y - 4, 7, 7, 1.5, 1.5, 'F');
+    doc.setFontSize(10); doc.setFont('helvetica', 'bold'); doc.setTextColor(255, 255, 255);
     doc.text(String(num), margin + 3.5, y + 0.8, { align: 'center' });
-    doc.setFontSize(13);
-    doc.setTextColor(...INK);
+    doc.setFontSize(13); doc.setTextColor(...INK);
     doc.text(text, margin + 10, y + 1);
     y += 5;
-    doc.setDrawColor(...SOFT);
-    doc.setLineWidth(0.3);
-    doc.line(margin, y + 1, pageW - margin, y + 1);
+    doc.setDrawColor(...SOFT); doc.setLineWidth(0.3); doc.line(margin, y + 1, pageW - margin, y + 1);
     y += 6;
   }
 
   function p(text, opts = {}) {
-    const size = opts.size || 10;
-    const color = opts.color || INK;
-    const bold = opts.bold || false;
-    doc.setFontSize(size);
-    doc.setFont('helvetica', bold ? 'bold' : 'normal');
-    doc.setTextColor(...color);
-    const lines = doc.splitTextToSize(text, contentW);
-    lines.forEach(line => {
-      checkPage(size * 0.5);
-      doc.text(line, margin, y);
-      y += size * 0.42;
-    });
+    const size = opts.size || 10; const color = opts.color || INK; const bold = opts.bold || false;
+    doc.setFontSize(size); doc.setFont('helvetica', bold ? 'bold' : 'normal'); doc.setTextColor(...color);
+    const lines = doc.splitTextToSize(String(text || ''), contentW);
+    lines.forEach(line => { checkPage(size * 0.5); doc.text(line, margin, y); y += size * 0.42; });
     y += 2;
   }
 
   function callout(label, text) {
-    const padding = 4;
     doc.setFontSize(10);
-    const lines = doc.splitTextToSize(text, contentW - 8);
-    const blockHeight = 7 + (lines.length * 4.2) + padding;
-    checkPage(blockHeight + 4);
-
-    doc.setFillColor(...SOFT);
-    doc.roundedRect(margin, y, contentW, blockHeight, 2, 2, 'F');
-    doc.setFillColor(...BLUE);
-    doc.rect(margin, y, 1.2, blockHeight, 'F');
-
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...BLUE);
+    const lines = doc.splitTextToSize(String(text || ''), contentW - 8);
+    const blockH = 7 + (lines.length * 4.2) + 4;
+    checkPage(blockH + 4);
+    doc.setFillColor(...SOFT); doc.roundedRect(margin, y, contentW, blockH, 2, 2, 'F');
+    doc.setFillColor(...BLUE); doc.rect(margin, y, 1.2, blockH, 'F');
+    doc.setFontSize(8); doc.setFont('helvetica', 'bold'); doc.setTextColor(...BLUE);
     doc.text(label.toUpperCase(), margin + 5, y + 5);
-
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...INK);
+    doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...INK);
     let ty = y + 10;
-    lines.forEach(line => {
-      doc.text(line, margin + 5, ty);
-      ty += 4.2;
-    });
-    y += blockHeight + 4;
+    lines.forEach(line => { doc.text(line, margin + 5, ty); ty += 4.2; });
+    y += blockH + 4;
   }
 
-  function bullet(text, num) {
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...INK);
-    const lines = doc.splitTextToSize(text, contentW - 10);
+  function bullet(text) {
+    doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...INK);
+    const lines = doc.splitTextToSize(String(text || ''), contentW - 10);
     checkPage(lines.length * 4.2 + 3);
-    doc.setFillColor(...BLUE);
-    doc.circle(margin + 2, y - 1, 1, 'F');
-    lines.forEach((line, i) => {
-      doc.text(line, margin + 7, y);
-      y += 4.2;
-    });
+    doc.setFillColor(...BLUE); doc.circle(margin + 2, y - 1, 1, 'F');
+    lines.forEach(line => { doc.text(line, margin + 7, y); y += 4.2; });
     y += 1;
   }
 
-  // === COVER ===
-  doc.setFillColor(...BLUE);
-  doc.rect(0, 0, pageW, 4, 'F');
-
+  // COVER
+  doc.setFillColor(...BLUE); doc.rect(0, 0, pageW, 4, 'F');
   y = margin + 6;
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...BLUE);
+
+  // Disclaimer banner
+  doc.setFillColor(...AMBER_BG); doc.roundedRect(margin, y, contentW, 10, 1.5, 1.5, 'F');
+  doc.setFontSize(8); doc.setFont('helvetica', 'bold'); doc.setTextColor(...AMBER_TEXT);
+  doc.text('DRAFT - AI-generated first draft. Review all findings before finalising or submitting.', margin + 4, y + 6);
+  y += 16;
+
+  doc.setFontSize(9); doc.setFont('helvetica', 'bold'); doc.setTextColor(...BLUE);
   doc.text('SAFEHUB HQ', margin, y);
-  doc.setTextColor(...INK);
-  doc.text(' • INVESTIGATION REPORT', margin + 25, y);
+  doc.setTextColor(...INK); doc.text(' \u2022 INVESTIGATION REPORT', margin + 25, y);
   y += 12;
 
-  doc.setFontSize(24);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...INK);
-  const titleLines = doc.splitTextToSize(r.industry + ' — ' + r.type, contentW);
-  titleLines.forEach(line => {
-    doc.text(line, margin, y);
-    y += 10;
-  });
+  doc.setFontSize(24); doc.setFont('helvetica', 'bold'); doc.setTextColor(...INK);
+  const titleLines = doc.splitTextToSize((r.industry || '') + ' \u2014 ' + (r.type || ''), contentW);
+  titleLines.forEach(line => { doc.text(line, margin, y); y += 10; });
   y += 2;
 
   // Meta row
-  doc.setFillColor(...SOFT);
-  doc.roundedRect(margin, y, contentW, 18, 2, 2, 'F');
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...MUTED);
-  doc.text('REF', margin + 4, y + 6);
-  doc.text('DATE', margin + 50, y + 6);
-  doc.text('INDUSTRY', margin + 100, y + 6);
-  doc.text('TYPE', margin + 145, y + 6);
-  doc.setFontSize(10);
-  doc.setTextColor(...INK);
-  doc.text(r.refId, margin + 4, y + 13);
-  doc.text(r.date, margin + 50, y + 13);
-  doc.text(r.industry, margin + 100, y + 13);
-  doc.text(r.type, margin + 145, y + 13);
+  doc.setFillColor(...SOFT); doc.roundedRect(margin, y, contentW, 18, 2, 2, 'F');
+  doc.setFontSize(8); doc.setFont('helvetica', 'bold'); doc.setTextColor(...MUTED);
+  doc.text('REF', margin + 4, y + 6); doc.text('DATE', margin + 50, y + 6);
+  doc.text('INDUSTRY', margin + 100, y + 6); doc.text('COUNTRY', margin + 145, y + 6);
+  doc.setFontSize(10); doc.setTextColor(...INK);
+  doc.text(r.refId || '', margin + 4, y + 13);
+  doc.text(r.date || '', margin + 50, y + 13);
+  doc.text(r.industry || '', margin + 100, y + 13);
+  doc.text((r.country || '') + (r.state ? ', ' + r.state : ''), margin + 145, y + 13);
   y += 24;
 
-  // 1. Executive Summary
-  h2(1, 'Executive Summary');
-  p(r.execSummary);
+  const icam = r.icam || {};
+  const defences = icam.absentFailedDefences || icam.defences || [];
+  const individual = icam.individualTeamActions || icam.individual || [];
+  const task = icam.taskEnvironmentalConditions || icam.task || [];
+  const org = icam.organisationalFactors || icam.organisational || [];
+  const correctiveActions = r.suggestedCorrectiveActions || r.correctiveActions || [];
+  const systemicFindings = r.systemicFindings || r.rootCauses || [];
+  const infoGaps = r.informationGaps || [];
+
+  let sectionNum = 1;
+  h2(sectionNum++, 'Executive Summary');
+  p(r.executiveSummary || r.execSummary || '');
 
   // Key numbers
   checkPage(20);
   const numW = (contentW - 8) / 3;
-  r.keyNumbers.forEach((n, i) => {
+  const keyNums = [
+    { val: String((r.immediateCauses || []).length), lbl: 'Immediate causes' },
+    { val: String((r.contributingFactors || []).length), lbl: 'Contributing factors' },
+    { val: String(correctiveActions.length), lbl: 'Suggested actions' }
+  ];
+  keyNums.forEach((n, i) => {
     const nx = margin + i * (numW + 4);
-    doc.setFillColor(...SOFT);
-    doc.roundedRect(nx, y, numW, 16, 2, 2, 'F');
-    doc.setFontSize(16);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...BLUE);
+    doc.setFillColor(...SOFT); doc.roundedRect(nx, y, numW, 16, 2, 2, 'F');
+    doc.setFontSize(16); doc.setFont('helvetica', 'bold'); doc.setTextColor(...BLUE);
     doc.text(n.val, nx + numW / 2, y + 8, { align: 'center' });
-    doc.setFontSize(7);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...MUTED);
+    doc.setFontSize(7); doc.setFont('helvetica', 'normal'); doc.setTextColor(...MUTED);
     doc.text(n.lbl.toUpperCase(), nx + numW / 2, y + 13, { align: 'center' });
   });
   y += 22;
 
-  // 2. Description & Sequence
-  h2(2, 'Incident Description & Sequence');
+  h2(sectionNum++, 'Incident Description & Sequence');
   p('Reported description:', { bold: true });
-  p(r.description);
+  p(r.description || '');
   y += 2;
   p('Reconstructed sequence:', { bold: true });
-  p(r.sequence);
+  p(r.incidentSequence || r.sequence || '');
 
-  // 3. Immediate Causes
-  h2(3, 'Immediate Causes');
-  p('Direct actions and conditions that led to the incident.', { color: MUTED, size: 9 });
-  r.immediateCauses.forEach((c, i) => callout('Cause ' + (i + 1), c));
+  h2(sectionNum++, 'Immediate Causes');
+  p('Direct actions and conditions that immediately preceded the incident.', { color: MUTED, size: 9 });
+  (r.immediateCauses || []).forEach((c, i) => callout('Cause ' + (i + 1), c));
 
-  // 4. Contributing Factors
-  h2(4, 'Contributing Factors');
+  h2(sectionNum++, 'Contributing Factors');
   p('Conditions that increased likelihood or severity.', { color: MUTED, size: 9 });
-  r.contributingFactors.forEach((c, i) => callout('Factor ' + (i + 1), c));
+  (r.contributingFactors || []).forEach((c, i) => callout('Factor ' + (i + 1), c));
 
-  // 5. Five Whys
-  h2(5, '5 Whys Root Cause Chain');
-  p('Iterative drilling from symptom to systemic root cause.', { color: MUTED, size: 9 });
-  r.fiveWhys.forEach((w, i) => {
-    callout('Why ' + (i + 1), w.why + ' — ' + w.because);
-  });
+  if (infoGaps.length > 0) {
+    h2(sectionNum++, 'Information Gaps');
+    p('Items still needed to complete the investigation.', { color: MUTED, size: 9 });
+    infoGaps.forEach(g => bullet(g));
+  }
 
-  // 6. ICAM
-  h2(6, 'ICAM Analysis');
-  p('Incident Cause Analysis Method — categorising causes across four systemic layers.', { color: MUTED, size: 9 });
-  
-  const icamLabels = [
-    { lbl: 'Absent / Failed Defences', items: r.icam.defences },
-    { lbl: 'Individual / Team Actions', items: r.icam.individual },
-    { lbl: 'Task / Environmental Conditions', items: r.icam.task },
-    { lbl: 'Organisational Factors', items: r.icam.organisational }
-  ];
-  icamLabels.forEach(ic => {
+  h2(sectionNum++, 'Causal Chain Analysis (5 Whys)');
+  p('Iterative causal chain drilling from immediate event to systemic factors.', { color: MUTED, size: 9 });
+  (r.fiveWhys || []).forEach((w, i) => callout('Why ' + (i + 1), w.why + ' \u2014 ' + w.because));
+
+  h2(sectionNum++, 'ICAM Analysis');
+  p('Incident Cause Analysis Method. Four systemic layers.', { color: MUTED, size: 9 });
+  [
+    { lbl: 'Absent / Failed Defences', items: defences },
+    { lbl: 'Individual / Team Actions', items: individual },
+    { lbl: 'Task / Environmental Conditions', items: task },
+    { lbl: 'Organisational Factors', items: org }
+  ].forEach(ic => {
     checkPage(20);
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...BLUE);
-    doc.text(ic.lbl.toUpperCase(), margin, y);
-    y += 5;
+    doc.setFontSize(10); doc.setFont('helvetica', 'bold'); doc.setTextColor(...BLUE);
+    doc.text(ic.lbl.toUpperCase(), margin, y); y += 5;
     ic.items.forEach(item => bullet(item));
     y += 2;
   });
 
-  // 7. Root Causes
-  h2(7, 'Root Causes');
-  p('The systemic issues that, if addressed, prevent recurrence.', { color: MUTED, size: 9 });
-  r.rootCauses.forEach((rc, i) => callout('Root cause ' + (i + 1) + ' — ' + rc.title, rc.detail));
+  h2(sectionNum++, 'Systemic Findings');
+  p('Organisational and systemic factors identified through investigation.', { color: MUTED, size: 9 });
+  systemicFindings.forEach((f, i) => callout('Finding ' + (i + 1) + ' \u2014 ' + (f.title || ''), f.detail || ''));
 
-  // 8. Corrective Actions Table
-  h2(8, 'Corrective Actions');
-  p('Ranked by Hierarchy of Controls — strongest controls first.', { color: MUTED, size: 9 });
+  h2(sectionNum++, 'Suggested Corrective Actions');
+  p('Suggested based on information provided. Confirm feasibility with site teams.', { color: MUTED, size: 9 });
 
   // Table header
   checkPage(12);
-  doc.setFillColor(...SOFT);
-  doc.rect(margin, y, contentW, 7, 'F');
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...INK);
+  doc.setFillColor(...SOFT); doc.rect(margin, y, contentW, 7, 'F');
+  doc.setFontSize(8); doc.setFont('helvetica', 'bold'); doc.setTextColor(...INK);
   doc.text('TIER', margin + 2, y + 4.5);
-  doc.text('ACTION', margin + 28, y + 4.5);
+  doc.text('SUGGESTED ACTION', margin + 28, y + 4.5);
   doc.text('OWNER', margin + 130, y + 4.5);
   doc.text('DUE', margin + 165, y + 4.5);
   y += 7;
 
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  r.correctiveActions.forEach(a => {
-    const actionLines = doc.splitTextToSize(a.action, 100);
-    const ownerLines = doc.splitTextToSize(a.owner, 33);
+  const tierColors = { 'Elimination': [209,250,229], 'Engineering': [219,234,254], 'Administrative': [254,243,199], 'PPE': [254,226,226] };
+  const tierTextColors = { 'Elimination': [4,120,87], 'Engineering': [30,64,175], 'Administrative': [146,64,14], 'PPE': [185,28,28] };
+
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+  correctiveActions.forEach(a => {
+    const actionLines = doc.splitTextToSize(a.action || '', 100);
+    const ownerLines = doc.splitTextToSize(a.owner || '', 33);
     const rowH = Math.max(actionLines.length, ownerLines.length) * 3.8 + 3;
     checkPage(rowH + 2);
 
-    // Tier badge
-    const tierColors = {
-      'Elimination': [209, 250, 229],
-      'Engineering': [219, 234, 254],
-      'Administrative': [254, 243, 199],
-      'PPE': [254, 226, 226]
-    };
-    const tierTextColors = {
-      'Elimination': [4, 120, 87],
-      'Engineering': [30, 64, 175],
-      'Administrative': [146, 64, 14],
-      'PPE': [185, 28, 28]
-    };
-    const tc = tierColors[a.tier] || [243, 246, 253];
+    const tc = tierColors[a.tier] || SOFT;
     const ttc = tierTextColors[a.tier] || INK;
-    doc.setFillColor(...tc);
-    doc.roundedRect(margin + 1, y + 0.8, 23, 5, 1, 1, 'F');
-    doc.setFontSize(7);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...ttc);
-    doc.text(a.tier, margin + 12.5, y + 4.2, { align: 'center' });
 
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...INK);
+    // Tier badge — wrapped text
+    const tierLines = doc.splitTextToSize(a.tier || '', 21);
+    const badgeH = Math.max(5, tierLines.length * 3.5) + 1;
+    doc.setFillColor(...tc); doc.roundedRect(margin + 1, y + 0.8, 23, badgeH, 1, 1, 'F');
+    doc.setFontSize(7); doc.setFont('helvetica', 'bold'); doc.setTextColor(...ttc);
+    tierLines.forEach((line, li) => { doc.text(line, margin + 12.5, y + 4.2 + li * 3.5, { align: 'center' }); });
+
+    doc.setFontSize(9); doc.setFont('helvetica', 'normal'); doc.setTextColor(...INK);
     let ty = y + 3.5;
     actionLines.forEach(line => { doc.text(line, margin + 28, ty); ty += 3.8; });
     let oy = y + 3.5;
     ownerLines.forEach(line => { doc.text(line, margin + 130, oy); oy += 3.8; });
-    doc.text(a.due, margin + 165, y + 3.5);
-
+    doc.text(a.due || '', margin + 165, y + 3.5);
     y += rowH;
-    doc.setDrawColor(...SOFT);
-    doc.setLineWidth(0.2);
-    doc.line(margin, y, pageW - margin, y);
+    doc.setDrawColor(...SOFT); doc.setLineWidth(0.2); doc.line(margin, y, pageW - margin, y);
   });
   y += 4;
 
-  // 9. Lessons Learned
-  h2(9, 'Lessons Learned');
+  h2(sectionNum++, 'Lessons Learned');
   p('Cross-site applicable insights for prevention.', { color: MUTED, size: 9 });
-  r.lessonsLearned.forEach((l, i) => callout('Lesson ' + (i + 1), l));
+  (r.lessonsLearned || []).forEach((l, i) => callout('Lesson ' + (i + 1), l));
 
-  // 10. Regulatory
-  h2(10, 'Regulatory & Compliance Notes');
-  p(r.regulatory);
+  h2(sectionNum++, 'Regulatory & Compliance Notes');
+  p(r.regulatoryNotes || r.regulatory || '');
 
-  // Final footer for last page
   addFooter();
-
-  // Save
-  const filename = 'Safehub-Investigation-' + r.refId + '.pdf';
-  doc.save(filename);
+  doc.save('Safehub-Investigation-' + (r.refId || 'Report') + '.pdf');
 }
 </script>
 
