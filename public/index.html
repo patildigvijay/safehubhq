@@ -630,7 +630,7 @@
           <input type="file" id="file-input" multiple accept=".pdf,.docx,.doc,.xlsx,.xls,.jpg,.jpeg,.png" onchange="onFilesSelected(this.files)">
           <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           <div class="upload-label">Drop files or click to upload</div>
-          <span class="upload-sub">PDF, Word, Excel, images</span>
+          <span class="upload-sub">PDFs, Word, Excel, photos (photos are analysed for visible details)</span>
         </div>
         <div class="upload-files-list" id="upload-files-list"></div>
       </div>
@@ -1374,7 +1374,7 @@ function renderReport(r) {
     <div class="rep-section">
       <div class="rep-section-head"><span class="rep-section-num">2</span><span class="rep-section-title">Incident Description &amp; Sequence</span></div>
       <p><strong>Reported description:</strong></p>
-      <p>${escapeHtml(r.description || '')}</p>
+      <p>${escapeHtml(r.cleanDescription || r.description || '')}</p>
       <p style="margin-top:16px;"><strong>Reconstructed sequence:</strong></p>
       <p>${escapeHtml(r.incidentSequence || r.sequence || '')}</p>
     </div>
@@ -1634,7 +1634,7 @@ function downloadPDF() {
 
   h2(sectionNum++, 'Incident Description & Sequence');
   p('Reported description:', { bold: true });
-  p(r.description || '');
+  p(r.cleanDescription || r.description || '');
   y += 2;
   p('Reconstructed sequence:', { bold: true });
   p(r.incidentSequence || r.sequence || '');
