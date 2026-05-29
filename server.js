@@ -160,20 +160,39 @@ Return ONLY this JSON structure:
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const message = await client.messages.create({
       model: 'claude-sonnet-4-5',
-      max_tokens: 4000,
+      max_tokens: 8000,
       system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: userPrompt }]
     });
 
     const responseText = message.content[0].text.trim();
+    const stopReason = message.stop_reason;
     let reportData;
     try {
-      const cleaned = responseText
+      // Try to extract JSON even if Claude added extra text — find first { and matching last }
+      let jsonStr = responseText
         .replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
-      reportData = JSON.parse(cleaned);
+
+      // If still not parsing, try to find the JSON object boundaries
+      const firstBrace = jsonStr.indexOf('{');
+      const lastBrace = jsonStr.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+        jsonStr = jsonStr.slice(firstBrace, lastBrace + 1);
+      }
+
+      reportData = JSON.parse(jsonStr);
     } catch (e) {
-      console.error('JSON parse error:', e, '\nResponse:', responseText.slice(0, 500));
-      return res.status(500).json({ error: 'Failed to parse AI response. Please try again.' });
+      console.error('JSON parse error:', e.message);
+      console.error('Stop reason:', stopReason);
+      console.error('Response length:', responseText.length);
+      console.error('Response preview:', responseText.slice(0, 300));
+      console.error('Response end:', responseText.slice(-300));
+
+      const truncated = stopReason === 'max_tokens';
+      const errMsg = truncated
+        ? 'The AI response was too long and got cut off. Try a shorter incident description, or contact support to increase the limit.'
+        : 'The AI returned an unexpected format. This usually clears on a retry — please try again.';
+      return res.status(500).json({ error: errMsg, detail: e.message });
     }
 
     reportData.refId = generateRefId();
