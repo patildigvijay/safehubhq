@@ -72,8 +72,8 @@
   .btn:hover .arr { transform: translateX(3px); }
 
   /* HERO SPLIT */
-  .hero-split { max-width: 1240px; margin: 0 auto; padding: 130px 32px 60px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
-  .hero-left { animation: fadeUp 0.6s ease; }
+  .hero-split { max-width: 1240px; margin: 0 auto; padding: 100px 32px 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .hero-left { animation: fadeUp 0.6s ease; padding-top: 24px; }
   .hero-right { animation: fadeUp 0.6s 0.1s ease both; }
   .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: white; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 13px; font-weight: 500; margin-bottom: 24px; }
   .pill .pill-icon { color: var(--blue); display: flex; }
@@ -522,7 +522,6 @@
       <li><a onclick="goToSection('why')">Why Safehub</a></li>
       <li><a onclick="goToSection('framework')">Framework</a></li>
       <li><a onclick="goToSection('resources')">Resources</a></li>
-      <li><a onclick="goToSection('pricing')">Pricing</a></li>
       <li><a onclick="goToSection('trust')">Trust</a></li>
     </ul>
     <div class="nav-actions">
@@ -641,7 +640,7 @@
   <div class="stat-strip-grid">
     <div class="stat-mini filled">
       <div class="stat-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <div><div class="stat-mini-val">3.5 hrs &rarr; 60s</div><div class="stat-mini-lbl">Avg. report time</div></div>
+      <div><div class="stat-mini-val">Few minutes</div><div class="stat-mini-lbl">Avg. report time</div></div>
     </div>
     <div class="stat-mini">
       <div class="stat-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
@@ -649,7 +648,7 @@
     </div>
     <div class="stat-mini">
       <div class="stat-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg></div>
-      <div><div class="stat-mini-val">6</div><div class="stat-mini-lbl">Frameworks supported</div></div>
+      <div><div class="stat-mini-val">6 markets</div><div class="stat-mini-lbl">AU, NZ, UK, EU, CA, US</div></div>
     </div>
     <div class="stat-mini filled">
       <div class="stat-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -678,7 +677,7 @@
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6h10"/><path d="M11 12h10"/><path d="M11 18h10"/><path d="m3 7 1 1 2-2"/><path d="m3 13 1 1 2-2"/><path d="m3 19 1 1 2-2"/></svg></div>
         <h3>Structured every time</h3>
-        <p>Consistent application of ICAM, 5 Whys, Fishbone and Bow-Tie on every report, every site.</p>
+        <p>Consistent application of ICAM, 5 Whys, and the Hierarchy of Controls on every report, every site.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
@@ -696,7 +695,7 @@
       <div class="stats-grid">
         <div class="stats-item"><div class="num">3.5h</div><div class="desc">Typical manual write-up time, now under a minute</div></div>
         <div class="stats-item"><div class="num">ICAM</div><div class="desc">Australian standard for incident investigation, built in</div></div>
-        <div class="stats-item"><div class="num">5</div><div class="desc">Markets: AU, NZ, UK, CA, US with jurisdiction-aware outputs</div></div>
+        <div class="stats-item"><div class="num">6</div><div class="desc">Markets: AU, NZ, UK, EU, CA, US with jurisdiction-aware outputs</div></div>
         <div class="stats-item"><div class="num">Draft</div><div class="desc">First draft in seconds. You review, verify, and finalise.</div></div>
       </div>
     </div>
@@ -720,7 +719,7 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-        <div class="timeline-content"><h3>Analyse</h3><p>Apply the right methodology: ICAM, 5 Whys, Fishbone or Bow-Tie. Surface contributing factors, systemic gaps, and absent defences.</p></div>
+        <div class="timeline-content"><h3>Analyse</h3><p>Apply ICAM and 5 Whys to surface contributing factors, systemic gaps, and absent defences.</p></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-num"><span class="step-num">04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
@@ -742,95 +741,12 @@
   <div class="resource-grid">
     <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="12" cy="19" r="3"/><path d="M5 8v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><path d="M12 13v3"/></svg></div><h3>5 Whys</h3><p>Iterative questioning to drill from the immediate event down to systemic contributing factors.</p></div>
     <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg></div><h3>ICAM</h3><p>Incident Cause Analysis Method. Separates absent/failed defences from individual and organisational factors.</p></div>
-    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/></svg></div><h3>Fishbone (Ishikawa)</h3><p>Categorical cause-and-effect mapping across people, process, equipment and environment.</p></div>
-    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>Bow-Tie</h3><p>Visualises threats, top events, consequences, and the preventive and mitigative barriers between them.</p></div>
     <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg></div><h3>Hierarchy of Controls</h3><p>Ranks corrective actions from elimination through to PPE so the strongest controls come first.</p></div>
-    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/></svg></div><h3>WHS Act alignment</h3><p>Outputs structured to support due-diligence obligations and regulator-facing disclosures.</p></div>
+    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>ISO 45001 alignment</h3><p>Findings and recommended controls structured to align with ISO 45001 occupational health and safety principles.</p></div>
+    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><h3>Information gap tagging</h3><p>Every finding tagged as FACT, INFERENCE, or PATTERN. Missing facts surfaced as explicit gaps for the investigator.</p></div>
+    <div class="resource-card"><div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/></svg></div><h3>Jurisdiction awareness</h3><p>Regulatory references and notification triggers matched to AU, NZ, UK, EU, CA, or US legislation.</p></div>
   </div>
 </section>
-
-<!-- PRICING -->
-<div class="pricing-soft" id="pricing">
-  <div class="pricing-inner">
-    <div class="section-eyebrow">Pricing</div>
-    <h2 class="section-title">Simple, transparent pricing</h2>
-    <p class="section-sub">Start with one free investigation. Scale as your team grows. No surprise fees, no annual lock-ins.</p>
-
-    <div class="billing-toggle-wrap">
-      <div class="billing-toggle">
-        <button class="toggle-btn active" id="monthly-btn" onclick="setBilling('monthly')">Monthly</button>
-        <button class="toggle-btn" id="annual-btn" onclick="setBilling('annual')">Annual <span class="save-badge">Save 17%</span></button>
-      </div>
-    </div>
-
-    <div class="pricing-grid-4">
-      <!-- FREE -->
-      <div class="price-card">
-        <div class="plan-name">Free</div>
-        <div class="plan-desc">For first-time users who want to see what Safehub can do.</div>
-        <div class="plan-price"><span class="amount">$0</span><span class="period">forever</span></div>
-        <div class="plan-per">&nbsp;</div>
-        <button class="plan-btn" onclick="focusForm()">Start free</button>
-        <ul class="plan-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 investigation report</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Full report depth</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> PDF + Word download</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> All methodologies</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No credit card needed</li>
-        </ul>
-      </div>
-
-      <!-- STARTER -->
-      <div class="price-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-desc">For safety officers and consultants running occasional investigations.</div>
-        <div class="plan-price"><span class="amount" data-monthly="$99" data-annual="$82">$99</span><span class="period">/month</span></div>
-        <div class="plan-per">$9.90 per report</div>
-        <button class="plan-btn">Choose Starter</button>
-        <ul class="plan-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 10 investigations / month</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> All methodologies</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> PDF + Word export</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Evidence file uploads</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Email support</li>
-        </ul>
-      </div>
-
-      <!-- PROFESSIONAL — MOST POPULAR -->
-      <div class="price-card featured">
-        <div class="popular-badge">Most Popular</div>
-        <div class="plan-name">Professional</div>
-        <div class="plan-desc">For HSE teams managing investigations across multiple sites.</div>
-        <div class="plan-price"><span class="amount" data-monthly="$249" data-annual="$207">$249</span><span class="period">/month</span></div>
-        <div class="plan-per">$4.98 per report</div>
-        <button class="plan-btn">Choose Professional</button>
-        <ul class="plan-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 50 investigations / month</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything in Starter</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Up to 5 team members</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Custom branding on reports</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Priority email support</li>
-        </ul>
-      </div>
-
-      <!-- ENTERPRISE -->
-      <div class="price-card">
-        <div class="plan-name">Enterprise</div>
-        <div class="plan-desc">For Tier 1 operators with custom security and integration needs.</div>
-        <div class="plan-price"><span class="custom-label">Custom</span></div>
-        <div class="plan-per">Volume pricing</div>
-        <button class="plan-btn">Contact sales</button>
-        <ul class="plan-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unlimited investigations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unlimited team members</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> SSO &amp; SCIM</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Custom integrations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dedicated CSM &amp; SLA</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- TRUST -->
 <div class="trust-soft" id="trust">
@@ -850,7 +766,7 @@
       <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Every finding tagged [FACT], [INFERENCE], or [PATTERN] so you know what still needs verification</div>
       <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Information gaps listed explicitly in every report. Safehub tells you what it doesn't know</div>
       <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Outputs structured to support regulator-facing investigations. Always review with your legal team before submitting</div>
-      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Jurisdiction-aware regulatory references for AU, NZ, UK, CA, and US</div>
+      <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> Jurisdiction-aware regulatory references for AU, NZ, UK, EU, CA, and US</div>
       <div class="trust-item"><svg class="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> No individual blame. Every analysis focuses on systemic and organisational factors</div>
     </div>
   </div>
@@ -881,7 +797,7 @@
       <h4>Platform</h4>
       <a onclick="focusForm()">Investigations</a>
       <a onclick="goToSection('framework')">Frameworks</a>
-      <a onclick="goToSection('pricing')">Pricing</a>
+      <a onclick="goToSection('resources')">Methodologies</a>
       <a onclick="goToSection('trust')">Security</a>
     </div>
     <div class="footer-col">
