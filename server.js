@@ -17,13 +17,35 @@ const SYSTEM_PROMPT = `You are a senior HSE (Health, Safety and Environment) inv
 
 CRITICAL RULES — follow these without exception:
 1. NEVER use the phrase "root cause" or "root cause analysis". Use: contributing factors, systemic factors, underlying factors, causal factors, or organisational factors instead.
-2. NEVER blame or single out individuals. Focus entirely on systemic, procedural, and organisational factors.
-3. NEVER invent facts. Do not fabricate names, dates, measurements, percentages, or specific details not present in the incident description. If a detail is missing, note it as an information gap.
-4. Tag every finding as [FACT] (directly stated in the description), [INFERENCE] (reasonably inferred from the facts), or [PATTERN] (known industry pattern relevant to this incident type).
-5. List information gaps explicitly — specific facts the investigator still needs to gather to complete a thorough investigation.
+2. NEVER blame or single out individuals. Focus entirely on systemic, procedural, and organisational factors. Refer to people by role (e.g. "the operator", "the supervisor", "the maintenance fitter"), never by name even if a name is provided in the input.
+3. NEVER MANUFACTURE FACTS. This is the most important rule. Do not invent, infer, or fabricate:
+   - Names of people, sites, equipment, or companies that aren't in the input
+   - Specific dates, times, measurements, distances, weights, or percentages
+   - Quoted statements or witness accounts
+   - Procedures, training records, or maintenance histories
+   - Any "facts" the input does not contain
+   If a relevant detail is not present, list it as an information gap. NEVER fill the gap with a plausible-sounding invention.
+4. Tag every finding as [FACT] (directly stated in the input or visible in an uploaded image), [INFERENCE] (reasonably inferred from the stated facts, with reasoning), or [PATTERN] (a known industry pattern relevant to this incident type, not specific to this case). Use these tags inline in every finding.
+5. List information gaps explicitly in the dedicated section — every specific fact the investigator still needs to gather to complete the investigation.
 6. All corrective actions are SUGGESTED only. They may not be feasible without site-level context.
 7. Focus analysis on contributing factors, systemic issues, and organisational conditions — not just immediate/proximate events.
 8. This report is a structured first draft to save the investigator time. It is not a final report.
+
+PARSING USER INPUT — important:
+Users may paste anything into the "What happened?" field, including:
+- A raw narrative paragraph
+- A structured incident report copy-pasted from their internal system (with field labels like "Reported By:", "Event Date/Time:", "Event Description:", "Immediate Action:", "Section:", "Was this a SIF event?:", etc.)
+- A mix of narrative and bullet points
+- Notes with abbreviations and incomplete sentences
+
+You MUST:
+- Extract every relevant fact from the input regardless of format
+- Use structured field values intelligently (e.g. "Event Date/Time: 17/07/2025 08:30" tells you the date and time)
+- Recognise classifications already made by the user's internal system (e.g. "Non-SIF", "Category 5", "Critical Risk: No") and treat them as user-provided facts
+- Pull narrative details from the event description into your analysis
+- Note immediate actions already taken (e.g. first aid given, hospital visit) as facts, not inventions
+- Ignore irrelevant metadata (system field labels, review status flags) when writing the clean narrative
+- If a photo or document is uploaded, extract every relevant detail you can see — equipment visible, conditions, text/labels in the image, environment
 
 JURISDICTION-SPECIFIC REGULATORY REFERENCES:
 - Australia: Work Health and Safety Act 2011 (Cth and state equivalents), Safe Work Australia codes of practice, state mining/rail/construction regulations (WHS Regs, mining regs by state)
@@ -57,33 +79,57 @@ app.post('/api/analyse', upload.array('files', 10), async (req, res) => {
     let riskList = [];
     try { riskList = JSON.parse(risks || '[]'); } catch (_) {}
 
-    // Process uploaded files
+    // Process uploaded files — text from docs, base64 for images (vision)
     let fileContext = '';
+    const imageBlocks = [];  // For Claude vision
+    const SUPPORTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5 MB per image (Claude vision limit)
+    const MAX_IMAGES = 6;
+
     if (req.files && req.files.length > 0) {
       fileContext = '\n\n--- UPLOADED SUPPORTING DOCUMENTS ---\n';
+      let imageCount = 0;
+
       for (const file of req.files) {
-        fileContext += `\nDocument: ${file.originalname} (${file.mimetype})\n`;
+        fileContext += `\nFile: ${file.originalname} (${file.mimetype})\n`;
         try {
           if (file.mimetype === 'application/pdf') {
             const pdfParse = require('pdf-parse');
             const data = await pdfParse(file.buffer);
-            fileContext += `Content:\n${data.text.slice(0, 3000)}\n`;
+            fileContext += `Content:\n${data.text.slice(0, 4000)}\n`;
           } else if (file.mimetype.includes('spreadsheet') || file.mimetype.includes('excel')) {
             const XLSX = require('xlsx');
             const wb = XLSX.read(file.buffer, { type: 'buffer' });
             const ws = wb.Sheets[wb.SheetNames[0]];
-            fileContext += `Content (CSV):\n${XLSX.utils.sheet_to_csv(ws).slice(0, 3000)}\n`;
+            fileContext += `Content (CSV):\n${XLSX.utils.sheet_to_csv(ws).slice(0, 4000)}\n`;
           } else if (file.mimetype.includes('wordprocessingml')) {
             const mammoth = require('mammoth');
             const result = await mammoth.extractRawText({ buffer: file.buffer });
-            fileContext += `Content:\n${result.value.slice(0, 3000)}\n`;
+            fileContext += `Content:\n${result.value.slice(0, 4000)}\n`;
+          } else if (SUPPORTED_IMAGE_TYPES.includes(file.mimetype)) {
+            if (imageCount >= MAX_IMAGES) {
+              fileContext += `[Image skipped — maximum ${MAX_IMAGES} images per investigation]\n`;
+            } else if (file.buffer.length > MAX_IMAGE_SIZE) {
+              fileContext += `[Image too large for vision analysis — ${(file.buffer.length / 1024 / 1024).toFixed(1)} MB, max 5 MB]\n`;
+            } else {
+              imageBlocks.push({
+                type: 'image',
+                source: {
+                  type: 'base64',
+                  media_type: file.mimetype,
+                  data: file.buffer.toString('base64')
+                }
+              });
+              fileContext += `[Image attached for visual analysis — see image ${imageCount + 1}]\n`;
+              imageCount++;
+            }
           } else if (file.mimetype.startsWith('text/')) {
-            fileContext += `Content:\n${file.buffer.toString('utf8').slice(0, 3000)}\n`;
+            fileContext += `Content:\n${file.buffer.toString('utf8').slice(0, 4000)}\n`;
           } else {
             fileContext += `[File type not extractable: ${file.mimetype}]\n`;
           }
         } catch (_) {
-          fileContext += `[Could not extract text from this file]\n`;
+          fileContext += `[Could not extract content from this file]\n`;
         }
       }
       fileContext += '\n--- END OF UPLOADED DOCUMENTS ---\n';
@@ -94,22 +140,29 @@ app.post('/api/analyse', upload.array('files', 10), async (req, res) => {
       : '';
     const riskNote = riskList.length > 0 ? `\nRisk Areas Flagged: ${riskList.join(', ')}` : '';
 
-    const userPrompt = `Conduct a thorough HSE incident investigation and return ONLY a valid JSON object — no markdown, no backticks, no preamble.
+    const visionNote = imageBlocks.length > 0
+      ? `\n\nIMPORTANT: ${imageBlocks.length} image${imageBlocks.length > 1 ? 's have' : ' has'} been attached. Examine ${imageBlocks.length > 1 ? 'each one' : 'it'} carefully and extract every relevant detail: equipment visible, conditions, text or labels in the image, environment, anything that could inform the investigation. Treat anything you can clearly see as a [FACT]. Do not speculate about what is not visible.`
+      : '';
+
+    const userPromptText = `Conduct a thorough HSE incident investigation and return ONLY a valid JSON object — no markdown, no backticks, no preamble.
 
 INCIDENT DETAILS:
 Industry: ${industry}
 Incident Type: ${incidentType}
 Country: ${country}${state ? `\nState/Province: ${state}` : ''}${location ? `\nLocation: ${location}` : ''}${date ? `\nDate: ${date}` : ''}${riskNote}${hpiNote}
 
-INCIDENT DESCRIPTION:
+WHAT HAPPENED (this may be a raw narrative OR a structured paste from the user's internal incident system — extract every relevant fact):
 ${description}
-${fileContext}
+${fileContext}${visionNote}
 
-Tag every finding as [FACT], [INFERENCE], or [PATTERN]. Never use "root cause" — use "contributing factor" or "systemic factor". Do not invent any specific details not provided. Reference ${country}-specific legislation only.
+Tag every finding as [FACT], [INFERENCE], or [PATTERN]. Never use "root cause". Never invent specifics not in the input or visible in attached images. Refer to people by role only, never by name. Reference ${country}-specific legislation only.
+
+The "cleanDescription" field is critical: extract a concise narrative of what happened from whatever the user provided. If they pasted a structured form dump, distil it into a clean 3-6 sentence incident description. Do not include field labels like "Reported By" or system metadata. Do not include the user's own assessments (like "Critical Risk Review" status) — those go elsewhere.
 
 Return ONLY this JSON structure:
 
 {
+  "cleanDescription": "Concise 3-6 sentence incident narrative extracted from the input. Plain prose. No field labels, no system metadata, no names of individuals.",
   "executiveSummary": "2-3 sentence summary: what happened, key findings, how many suggested actions",
   "incidentSequence": "Chronological reconstruction of events. 3-5 sentences. Use [FACT] and [INFERENCE] tags.",
   "immediateCauses": [
@@ -157,12 +210,17 @@ Return ONLY this JSON structure:
   "regulatoryNotes": "Specific ${country} legislation, regulations, codes of practice, and standards relevant to this incident. Include notification obligations if applicable."
 }`;
 
+    // Build multi-modal content array — images first, then text prompt
+    const userContent = imageBlocks.length > 0
+      ? [...imageBlocks, { type: 'text', text: userPromptText }]
+      : userPromptText;
+
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const message = await client.messages.create({
       model: 'claude-sonnet-4-5',
       max_tokens: 8000,
       system: SYSTEM_PROMPT,
-      messages: [{ role: 'user', content: userPrompt }]
+      messages: [{ role: 'user', content: userContent }]
     });
 
     const responseText = message.content[0].text.trim();
@@ -311,7 +369,7 @@ app.post('/api/generate-docx', async (req, res) => {
 
           sHead(2, 'Incident Description & Sequence'),
           bP('Reported description:', true),
-          bP(r.description || ''),
+          bP(r.cleanDescription || r.description || ''),
           bP('Reconstructed sequence:', true),
           bP(r.incidentSequence || r.sequence || ''),
 
