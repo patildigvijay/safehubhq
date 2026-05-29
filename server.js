@@ -70,14 +70,16 @@ function generateRefId() {
 // ============ ANALYSE ENDPOINT ============
 app.post('/api/analyse', upload.array('files', 10), async (req, res) => {
   try {
-    const { description, industry, incidentType, country, state, location, date, risks, hpiSif } = req.body;
+    const { description, incidentType, location, date } = req.body;
 
-    if (!description || !industry || !incidentType || !country) {
-      return res.status(400).json({ error: 'Description, industry, incident type, and country are required.' });
+    if (!description || !incidentType) {
+      return res.status(400).json({ error: 'Description and at least one incident type are required.' });
     }
 
-    let riskList = [];
-    try { riskList = JSON.parse(risks || '[]'); } catch (_) {}
+    let typeList = [];
+    try { typeList = JSON.parse(incidentType); if (!Array.isArray(typeList)) typeList = [incidentType]; }
+    catch (_) { typeList = [incidentType]; }
+    const incidentTypeStr = typeList.join(', ');
 
     // Process uploaded files — text from docs, base64 for images (vision)
     let fileContext = '';
@@ -135,33 +137,41 @@ app.post('/api/analyse', upload.array('files', 10), async (req, res) => {
       fileContext += '\n--- END OF UPLOADED DOCUMENTS ---\n';
     }
 
-    const hpiNote = hpiSif === 'true'
-      ? '\n\u26A0 HPI / SIF POTENTIAL: This incident has been flagged as a High Potential Incident or Serious Injury and Fatality potential event. Apply extra rigour to barrier analysis and systemic factors.'
-      : '';
-    const riskNote = riskList.length > 0 ? `\nRisk Areas Flagged: ${riskList.join(', ')}` : '';
-
     const visionNote = imageBlocks.length > 0
       ? `\n\nIMPORTANT: ${imageBlocks.length} image${imageBlocks.length > 1 ? 's have' : ' has'} been attached. Examine ${imageBlocks.length > 1 ? 'each one' : 'it'} carefully and extract every relevant detail: equipment visible, conditions, text or labels in the image, environment, anything that could inform the investigation. Treat anything you can clearly see as a [FACT]. Do not speculate about what is not visible.`
       : '';
 
     const userPromptText = `Conduct a thorough HSE incident investigation and return ONLY a valid JSON object — no markdown, no backticks, no preamble.
 
-INCIDENT DETAILS:
-Industry: ${industry}
-Incident Type: ${incidentType}
-Country: ${country}${state ? `\nState/Province: ${state}` : ''}${location ? `\nLocation: ${location}` : ''}${date ? `\nDate: ${date}` : ''}${riskNote}${hpiNote}
+User-provided incident type(s): ${incidentTypeStr}${location ? `\nLocation: ${location}` : ''}${date ? `\nDate: ${date}` : ''}
 
-WHAT HAPPENED (this may be a raw narrative OR a structured paste from the user's internal incident system — extract every relevant fact):
+WHAT HAPPENED AND ANY OTHER DETAILS (may be a raw narrative OR a structured paste from the user's internal incident system — extract every relevant fact):
 ${description}
 ${fileContext}${visionNote}
 
-Tag every finding as [FACT], [INFERENCE], or [PATTERN]. Never use "root cause". Never invent specifics not in the input or visible in attached images. Refer to people by role only, never by name. Reference ${country}-specific legislation only.
+AUTO-DETECTION FROM INPUT:
+You must detect the following from the description (and any uploaded documents/images). If you cannot reasonably determine a value, set it to "Unknown" or [] — do NOT guess wildly. Tag your confidence honestly.
+
+- detectedIndustry: e.g. "Mining", "Rail / Transport", "Construction", "Manufacturing", "Oil & Gas", "Utilities", "Healthcare", "Warehousing / Logistics", "Agriculture", or "Other / Unknown"
+- detectedCountry: One of "Australia", "New Zealand", "United Kingdom", "Canada", "United States", or "Unknown". Infer from terminology (e.g. "WHS Act" or "Aurizon" or "QLD" → Australia; "HSWA" → NZ; "OSHA" → US; "RIDDOR" → UK; "WorkSafeBC" → Canada). If no jurisdiction signals are present, set Unknown.
+- detectedState: State or province if mentioned, else ""
+- detectedRiskAreas: Array of any of these that apply based on the incident: "Confined space", "Working at height", "Moving plant / machinery", "Stored energy", "Electrical", "Hot work", "Hazardous substances", "Lifting operations", "Excavation / ground collapse", "Slip / trip / fall", "Vehicle / traffic", "Fatigue", "Manual handling". Only include those clearly evident from the input.
+- detectedHpiSif: true ONLY if the incident clearly involved or had potential for serious injury or fatality (e.g. fatality, permanent injury, near-miss with severe potential). Otherwise false.
+
+Tag every finding as [FACT], [INFERENCE], or [PATTERN]. Never use "root cause". Never invent specifics not in the input or visible in attached images. Refer to people by role only, never by name.
+
+For regulatory references, use the detected country's legislation. If country is Unknown, write general principles applicable across jurisdictions.
 
 The "cleanDescription" field is critical: extract a concise narrative of what happened from whatever the user provided. If they pasted a structured form dump, distil it into a clean 3-6 sentence incident description. Do not include field labels like "Reported By" or system metadata. Do not include the user's own assessments (like "Critical Risk Review" status) — those go elsewhere.
 
 Return ONLY this JSON structure:
 
 {
+  "detectedIndustry": "e.g. Mining, or Unknown if not clear",
+  "detectedCountry": "Australia / New Zealand / United Kingdom / Canada / United States / Unknown",
+  "detectedState": "State or province if mentioned, else empty string",
+  "detectedRiskAreas": ["risk area 1", "risk area 2"],
+  "detectedHpiSif": false,
   "cleanDescription": "Concise 3-6 sentence incident narrative extracted from the input. Plain prose. No field labels, no system metadata, no names of individuals.",
   "executiveSummary": "2-3 sentence summary: what happened, key findings, how many suggested actions",
   "incidentSequence": "Chronological reconstruction of events. 3-5 sentences. Use [FACT] and [INFERENCE] tags.",
@@ -207,7 +217,7 @@ Return ONLY this JSON structure:
     "Lesson 2",
     "Lesson 3"
   ],
-  "regulatoryNotes": "Specific ${country} legislation, regulations, codes of practice, and standards relevant to this incident. Include notification obligations if applicable."
+  "regulatoryNotes": "Legislation, regulations, codes of practice, and standards relevant to this incident in the detected country. Include notification obligations if applicable."
 }`;
 
     // Build multi-modal content array — images first, then text prompt
@@ -255,10 +265,10 @@ Return ONLY this JSON structure:
 
     reportData.refId = generateRefId();
     reportData.date = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
-    reportData.industry = industry;
-    reportData.type = incidentType;
-    reportData.country = country;
-    reportData.state = state || '';
+    reportData.industry = reportData.detectedIndustry || 'Unknown';
+    reportData.type = incidentTypeStr;
+    reportData.country = reportData.detectedCountry || 'Unknown';
+    reportData.state = reportData.detectedState || '';
     reportData.location = location || 'Not specified';
     reportData.description = description;
 
@@ -267,6 +277,97 @@ Return ONLY this JSON structure:
   } catch (error) {
     console.error('Analysis error:', error);
     res.status(500).json({ error: 'Analysis failed. Please try again.', detail: error.message });
+  }
+});
+
+// ============ REFINE ENDPOINT ============
+app.post('/api/refine', async (req, res) => {
+  try {
+    const { currentReport, instruction } = req.body;
+    if (!currentReport || !instruction || !instruction.trim()) {
+      return res.status(400).json({ error: 'Current report and instruction are required.' });
+    }
+
+    // Strip metadata fields that the AI shouldn't rewrite
+    const reportForAI = { ...currentReport };
+    delete reportForAI.refId;
+    delete reportForAI.date;
+    delete reportForAI.description;  // raw input — keep, don't let AI change
+    delete reportForAI.location;
+
+    const refinePrompt = `You are refining an existing HSE investigation draft. Apply the user's instruction below and return the updated report.
+
+CURRENT DRAFT (JSON):
+${JSON.stringify(reportForAI, null, 2)}
+
+USER INSTRUCTION:
+"${instruction}"
+
+RULES:
+1. Apply ONLY the user's requested change. Keep everything else identical.
+2. Maintain the same JSON structure (all the same field names).
+3. Continue tagging findings with [FACT], [INFERENCE], [PATTERN].
+4. NEVER manufacture facts. If the user asks you to add a fact not provided in their instruction, only do so if they have given you that fact directly. Otherwise, decline politely in the changesSummary.
+5. Never use "root cause" terminology.
+6. Never blame individuals by name.
+7. If the user's instruction conflicts with rules above, explain politely in changesSummary and do not make the harmful change.
+
+Return ONLY valid JSON in this exact shape (no markdown, no backticks):
+{
+  "updatedReport": { ...full updated report with the same fields as the current draft... },
+  "changesSummary": "One short sentence describing exactly what was changed. If you declined to make a requested change, explain why here."
+}`;
+
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const message = await client.messages.create({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 8000,
+      system: SYSTEM_PROMPT,
+      messages: [{ role: 'user', content: refinePrompt }]
+    });
+
+    const responseText = message.content[0].text.trim();
+    const stopReason = message.stop_reason;
+    let parsed;
+    try {
+      let jsonStr = responseText
+        .replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+      const firstBrace = jsonStr.indexOf('{');
+      const lastBrace = jsonStr.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+        jsonStr = jsonStr.slice(firstBrace, lastBrace + 1);
+      }
+      parsed = JSON.parse(jsonStr);
+    } catch (e) {
+      console.error('Refine parse error:', e.message, 'Stop:', stopReason);
+      const truncated = stopReason === 'max_tokens';
+      return res.status(500).json({
+        error: truncated
+          ? 'Response was cut off. Try a more focused instruction.'
+          : 'Could not parse the AI response. Please try rephrasing your instruction.'
+      });
+    }
+
+    // Re-attach preserved metadata
+    const updated = { ...parsed.updatedReport };
+    updated.refId = currentReport.refId;
+    updated.date = currentReport.date;
+    updated.description = currentReport.description;
+    updated.location = currentReport.location;
+    updated.industry = updated.detectedIndustry || currentReport.industry;
+    updated.country = updated.detectedCountry || currentReport.country;
+    updated.state = updated.detectedState || currentReport.state;
+    updated.type = currentReport.type;
+
+    res.json({
+      success: true,
+      report: updated,
+      changesSummary: parsed.changesSummary || 'Report updated.'
+    });
+
+  } catch (error) {
+    console.error('Refine error:', error);
+    res.status(500).json({ error: 'Refinement failed. Please try again.', detail: error.message });
   }
 });
 
