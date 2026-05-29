@@ -1277,7 +1277,7 @@ async function generateAnalysis() {
       apiError = err.message;
       clearAnalysisTimers();
       loading.classList.remove('active');
-      alert('Investigation failed: ' + err.message + '\n\nCheck that ANTHROPIC_API_KEY is set in Vercel environment variables.');
+      alert('Investigation failed: ' + err.message);
     });
 
   // Start animation — when done, check if API is also done
