@@ -405,6 +405,79 @@
   .draft-banner { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 12px; color: #92400e; font-weight: 500; }
   .draft-banner svg { flex-shrink: 0; width: 14px; height: 14px; }
 
+  /* MULTI-SELECT (incident type) */
+  .multi-select { position: relative; }
+  .multi-select-trigger { width: 100%; padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 10px; background: white; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: var(--ink); font-family: inherit; transition: all 0.15s; }
+  .multi-select-trigger:hover { border-color: var(--blue); }
+  .multi-select-trigger:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30,77,216,0.1); }
+  .multi-select-label { color: var(--muted); flex: 1; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .multi-select-label.has-value { color: var(--ink); }
+  .multi-select-panel { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: white; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 30px rgba(10,14,26,0.12); max-height: 320px; overflow-y: auto; z-index: 100; padding: 8px 0; }
+  .multi-select.open .multi-select-panel { display: block; }
+  .multi-select-category { font-size: 11px; font-weight: 700; color: var(--muted-2); letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 14px 4px; }
+  .multi-select-option { display: flex; align-items: center; gap: 10px; padding: 8px 14px; cursor: pointer; font-size: 13px; color: var(--ink); transition: background 0.1s; }
+  .multi-select-option:hover { background: var(--bg-soft); }
+  .multi-select-option input { width: 16px; height: 16px; cursor: pointer; accent-color: var(--blue); }
+
+  /* UPLOAD METER */
+  .upload-meter { margin-top: 8px; font-size: 11px; color: var(--muted); }
+  .upload-bar { margin-top: 4px; height: 4px; background: var(--bg-soft); border-radius: 2px; overflow: hidden; }
+  .upload-bar-fill { height: 100%; background: var(--blue); border-radius: 2px; transition: width 0.3s, background 0.3s; }
+  .upload-bar-fill.warn { background: #f59e0b; }
+  .upload-bar-fill.danger { background: #dc2626; }
+
+  /* SPLIT REPORT + CHAT LAYOUT */
+  .report-overlay.split .rep-modal { max-width: 1400px; width: 95vw; height: 92vh; display: flex; flex-direction: column; padding: 0; }
+  .rep-modal-header { padding: 16px 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-shrink: 0; }
+  .rep-modal-header h3 { margin: 0; font-size: 16px; font-weight: 700; color: var(--ink); }
+  .rep-modal-actions { display: flex; gap: 8px; align-items: center; }
+  .rep-split-body { display: flex; flex: 1; min-height: 0; }
+  .rep-doc-panel { flex: 1 1 65%; overflow-y: auto; padding: 28px 32px; border-right: 1px solid var(--line); }
+  .rep-chat-panel { flex: 0 0 35%; display: flex; flex-direction: column; background: var(--bg-soft); min-width: 360px; }
+  .rep-chat-head { padding: 14px 18px; border-bottom: 1px solid var(--line); background: white; }
+  .rep-chat-head .title { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
+  .rep-chat-head .sub { font-size: 12px; color: var(--muted); }
+  .rep-chat-quick { padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid var(--line); background: white; }
+  .rep-chat-quick .chip { font-size: 11px; padding: 4px 10px; }
+  .rep-chat-history { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+  .rep-chat-msg { max-width: 90%; padding: 10px 14px; border-radius: 14px; font-size: 13px; line-height: 1.45; word-wrap: break-word; }
+  .rep-chat-msg.user { align-self: flex-end; background: var(--blue); color: white; border-bottom-right-radius: 4px; }
+  .rep-chat-msg.ai { align-self: flex-start; background: white; color: var(--ink); border-bottom-left-radius: 4px; border: 1px solid var(--line); }
+  .rep-chat-msg.ai .change-tag { display: inline-block; margin-top: 6px; font-size: 11px; color: var(--muted); font-style: italic; }
+  .rep-chat-msg.thinking { background: white; border: 1px solid var(--line); color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .rep-chat-msg.thinking .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: pulse 1.4s infinite; }
+  .rep-chat-msg.thinking .dot:nth-child(2) { animation-delay: 0.2s; }
+  .rep-chat-msg.thinking .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse { 0%, 60%, 100% { opacity: 0.3; } 30% { opacity: 1; } }
+  .rep-chat-input-wrap { padding: 12px 14px; background: white; border-top: 1px solid var(--line); }
+  .rep-chat-input { width: 100%; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 10px; font-family: inherit; font-size: 13px; resize: vertical; min-height: 60px; max-height: 140px; color: var(--ink); }
+  .rep-chat-input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30,77,216,0.1); }
+  .rep-chat-send { margin-top: 8px; width: 100%; padding: 9px; background: var(--blue); color: white; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+  .rep-chat-send:hover { background: #1838b3; }
+  .rep-chat-send:disabled { background: var(--muted); cursor: not-allowed; }
+
+  /* DETECTED FIELDS BAR */
+  .rep-detected-bar { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 20px; padding: 10px 14px; background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 10px; }
+  .rep-detected-bar .label { font-size: 11px; font-weight: 600; color: var(--muted-2); margin-right: 6px; align-self: center; text-transform: uppercase; letter-spacing: 0.04em; }
+  .rep-detected-tag { font-size: 11px; padding: 3px 9px; background: white; border: 1px solid var(--blue-100); border-radius: 999px; color: var(--blue); font-weight: 500; }
+  .rep-detected-tag.warn { background: #fffbeb; border-color: #fcd34d; color: #92400e; font-weight: 600; }
+
+  /* SECTION HIGHLIGHT ON CHANGE */
+  .rep-section.changed { animation: highlight-flash 2.2s ease-out; }
+  @keyframes highlight-flash {
+    0% { background: #fef3c7; box-shadow: 0 0 0 4px #fde68a; }
+    100% { background: transparent; box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* MOBILE: stack the panels */
+  @media (max-width: 900px) {
+    .report-overlay.split .rep-modal { width: 100vw; height: 100vh; max-width: none; border-radius: 0; }
+    .rep-split-body { flex-direction: column; }
+    .rep-doc-panel { flex: 1; border-right: none; border-bottom: 1px solid var(--line); }
+    .rep-chat-panel { flex: 0 0 auto; min-width: 0; max-height: 50vh; }
+    .rep-chat-history { max-height: 200px; }
+  }
+
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .hero-split { padding: 100px 16px 32px; gap: 24px; }
@@ -492,135 +565,41 @@
       </div>
 
       <div class="try-field">
-        <label>What happened?</label>
-        <textarea class="try-textarea" id="hero-description" placeholder="Describe the incident in your own words. Include sequence, equipment, conditions, and any context." rows="4"></textarea>
+        <label>What happened and any other details</label>
+        <textarea class="try-textarea" id="hero-description" placeholder="Paste your incident report, or describe what happened in your own words. Include sequence, equipment, conditions, who was involved, and any context. The AI auto-detects industry, jurisdiction, and risk areas from this." rows="6"></textarea>
       </div>
 
-      <div class="try-row-2">
-        <div class="try-field" style="margin-bottom:0;">
-          <label>Industry</label>
-          <select class="try-select" id="hero-industry">
-            <option value="">Select...</option>
-            <option>Mining</option>
-            <option>Construction</option>
-            <option>Rail / Transport</option>
-            <option>Manufacturing</option>
-            <option>Oil &amp; Gas</option>
-            <option>Utilities</option>
-            <option>Healthcare</option>
-            <option>Warehousing / Logistics</option>
-            <option>Agriculture</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="try-field" style="margin-bottom:0;">
-          <label>Country</label>
-          <select class="try-select" id="hero-country" onchange="onCountryChange()">
-            <option value="">Select...</option>
-            <option value="Australia">Australia</option>
-            <option value="New Zealand">New Zealand</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Canada">Canada</option>
-            <option value="United States">United States</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="try-row-2" id="state-row" style="display:none;margin-top:12px;">
-        <div class="try-field" style="margin-bottom:0;">
-          <label>State / Province</label>
-          <select class="try-select" id="hero-state">
-            <option value="">Select...</option>
-          </select>
-        </div>
-        <div class="try-field" style="margin-bottom:0;">
-          <label>Incident Type</label>
-          <select class="try-select" id="hero-type">
-            <option value="">Select...</option>
-            <optgroup label="Safety">
-              <option>Near miss</option>
-              <option>First aid</option>
-              <option>Medical treatment</option>
-              <option>Lost time injury</option>
-              <option>Serious injury</option>
-              <option>Fatality</option>
-            </optgroup>
-            <optgroup label="Environment">
-              <option>Environmental spill / release</option>
-              <option>Air emission breach</option>
-              <option>Waste / contamination</option>
-              <option>Wildlife / ecology impact</option>
-            </optgroup>
-            <optgroup label="Health">
-              <option>Occupational illness</option>
-              <option>Exposure event</option>
-              <option>Mental health / psychosocial</option>
-              <option>Fatigue-related</option>
-            </optgroup>
-            <optgroup label="Other">
-              <option>Property / asset damage</option>
-              <option>Process safety event</option>
-              <option>Security incident</option>
-              <option>Other / not listed</option>
-            </optgroup>
-          </select>
-        </div>
-      </div>
-
-      <div id="type-row-standalone" style="margin-top:12px;">
-        <div class="try-field" style="margin-bottom:0;">
-          <label>Incident Type</label>
-          <select class="try-select" id="hero-type-single">
-            <option value="">Select...</option>
-            <optgroup label="Safety">
-              <option>Near miss</option>
-              <option>First aid</option>
-              <option>Medical treatment</option>
-              <option>Lost time injury</option>
-              <option>Serious injury</option>
-              <option>Fatality</option>
-            </optgroup>
-            <optgroup label="Environment">
-              <option>Environmental spill / release</option>
-              <option>Air emission breach</option>
-              <option>Waste / contamination</option>
-              <option>Wildlife / ecology impact</option>
-            </optgroup>
-            <optgroup label="Health">
-              <option>Occupational illness</option>
-              <option>Exposure event</option>
-              <option>Mental health / psychosocial</option>
-              <option>Fatigue-related</option>
-            </optgroup>
-            <optgroup label="Other">
-              <option>Property / asset damage</option>
-              <option>Process safety event</option>
-              <option>Security incident</option>
-              <option>Other / not listed</option>
-            </optgroup>
-          </select>
-        </div>
-      </div>
-
-      <div class="try-field" style="margin-top:14px;">
-        <span class="chip-group-label">Risk areas <span style="font-weight:400;color:var(--muted-2);">(select all that apply)</span></span>
-        <div class="chip-row">
-          <span class="chip hpi" data-risk="HPI / SIF potential" onclick="toggleChip(this,'risk')">&#9888; HPI / SIF potential</span>
-        </div>
-        <div class="chip-row" id="risk-chips">
-          <span class="chip" data-risk="Confined space" onclick="toggleChip(this,'risk')">Confined space</span>
-          <span class="chip" data-risk="Working at height" onclick="toggleChip(this,'risk')">Working at height</span>
-          <span class="chip" data-risk="Moving plant / machinery" onclick="toggleChip(this,'risk')">Moving plant / machinery</span>
-          <span class="chip" data-risk="Stored energy" onclick="toggleChip(this,'risk')">Stored energy</span>
-          <span class="chip" data-risk="Electrical" onclick="toggleChip(this,'risk')">Electrical</span>
-          <span class="chip" data-risk="Hot work" onclick="toggleChip(this,'risk')">Hot work</span>
-          <span class="chip" data-risk="Hazardous substances" onclick="toggleChip(this,'risk')">Hazardous substances</span>
-          <span class="chip" data-risk="Lifting operations" onclick="toggleChip(this,'risk')">Lifting operations</span>
-          <span class="chip" data-risk="Excavation / ground collapse" onclick="toggleChip(this,'risk')">Excavation / ground</span>
-          <span class="chip" data-risk="Slip / trip / fall" onclick="toggleChip(this,'risk')">Slip / trip / fall</span>
-          <span class="chip" data-risk="Vehicle / traffic" onclick="toggleChip(this,'risk')">Vehicle / traffic</span>
-          <span class="chip" data-risk="Fatigue" onclick="toggleChip(this,'risk')">Fatigue</span>
-          <span class="chip" data-risk="Manual handling" onclick="toggleChip(this,'risk')">Manual handling</span>
+      <div class="try-field">
+        <label>Incident type <span style="font-weight:400;color:var(--muted-2);font-size:12px;">(select one or more)</span></label>
+        <div class="multi-select" id="type-multi-select">
+          <button type="button" class="multi-select-trigger" onclick="toggleMultiSelect()">
+            <span id="type-select-label" class="multi-select-label">Select...</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="multi-select-panel" id="type-select-panel">
+            <div class="multi-select-category">Safety</div>
+            <label class="multi-select-option"><input type="checkbox" value="Near miss"> Near miss</label>
+            <label class="multi-select-option"><input type="checkbox" value="First aid"> First aid</label>
+            <label class="multi-select-option"><input type="checkbox" value="Medical treatment"> Medical treatment</label>
+            <label class="multi-select-option"><input type="checkbox" value="Lost time injury"> Lost time injury</label>
+            <label class="multi-select-option"><input type="checkbox" value="Serious injury"> Serious injury</label>
+            <label class="multi-select-option"><input type="checkbox" value="Fatality"> Fatality</label>
+            <div class="multi-select-category">Environment</div>
+            <label class="multi-select-option"><input type="checkbox" value="Environmental spill / release"> Environmental spill / release</label>
+            <label class="multi-select-option"><input type="checkbox" value="Air emission breach"> Air emission breach</label>
+            <label class="multi-select-option"><input type="checkbox" value="Waste / contamination"> Waste / contamination</label>
+            <label class="multi-select-option"><input type="checkbox" value="Wildlife / ecology impact"> Wildlife / ecology impact</label>
+            <div class="multi-select-category">Health</div>
+            <label class="multi-select-option"><input type="checkbox" value="Occupational illness"> Occupational illness</label>
+            <label class="multi-select-option"><input type="checkbox" value="Exposure event"> Exposure event</label>
+            <label class="multi-select-option"><input type="checkbox" value="Mental health / psychosocial"> Mental health / psychosocial</label>
+            <label class="multi-select-option"><input type="checkbox" value="Fatigue-related"> Fatigue-related</label>
+            <div class="multi-select-category">Other</div>
+            <label class="multi-select-option"><input type="checkbox" value="Property / asset damage"> Property / asset damage</label>
+            <label class="multi-select-option"><input type="checkbox" value="Process safety event"> Process safety event</label>
+            <label class="multi-select-option"><input type="checkbox" value="Security incident"> Security incident</label>
+            <label class="multi-select-option"><input type="checkbox" value="Other / not listed"> Other / not listed</label>
+          </div>
         </div>
       </div>
 
@@ -630,7 +609,11 @@
           <input type="file" id="file-input" multiple accept=".pdf,.docx,.doc,.xlsx,.xls,.jpg,.jpeg,.png" onchange="onFilesSelected(this.files)">
           <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           <div class="upload-label">Drop files or click to upload</div>
-          <span class="upload-sub">PDFs, Word, Excel, photos (photos are analysed for visible details)</span>
+          <span class="upload-sub">PDFs, Word, Excel, photos (photos are auto-compressed and analysed for visible details)</span>
+        </div>
+        <div class="upload-meter" id="upload-meter" style="display:none;">
+          <span id="upload-size">0 KB</span> / 4.5 MB
+          <div class="upload-bar"><div class="upload-bar-fill" id="upload-bar-fill"></div></div>
         </div>
         <div class="upload-files-list" id="upload-files-list"></div>
       </div>
@@ -972,30 +955,51 @@
 </div>
 
 <!-- REPORT MODAL -->
-<div class="report-overlay" id="report-overlay" onclick="if(event.target===this)closeReport()">
-  <div class="report-modal">
-    <div class="report-head">
-      <h2>Investigation Report</h2>
-      <div class="report-head-actions">
+<div class="report-overlay split" id="report-overlay" onclick="if(event.target===this)closeReport()">
+  <div class="report-modal rep-modal">
+    <div class="rep-modal-header">
+      <h3>Investigation Draft</h3>
+      <div class="rep-modal-actions">
         <div id="download-notice" style="display:none; align-items:center; gap:6px; padding: 6px 12px; background: #ecfdf5; border: 1px solid #a7f3d0; color: #047857; border-radius: 999px; font-size: 12px; font-weight: 600;">
           <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          PDF downloaded
+          Downloaded
         </div>
         <button class="btn btn-word" onclick="downloadWord()" id="word-btn">
           <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Word (.docx)
+          Word
         </button>
         <button class="btn btn-primary" onclick="downloadPDF()">
           <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
+          PDF
         </button>
-        <button class="report-close" onclick="closeReport()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <button class="report-close" onclick="closeReport()" style="background:transparent;border:none;cursor:pointer;padding:6px;color:var(--muted);">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
     </div>
-    <div class="report-body" id="report-body">
-      <!-- Report content injected here -->
+    <div class="rep-split-body">
+      <div class="rep-doc-panel" id="report-body">
+        <!-- Report content injected here -->
+      </div>
+      <div class="rep-chat-panel">
+        <div class="rep-chat-head">
+          <div class="title">Refine your draft</div>
+          <div class="sub">Tell the AI what to change. It updates the report in place.</div>
+        </div>
+        <div class="rep-chat-quick">
+          <span class="chip" onclick="quickRefine('Tighten the executive summary to 2 sentences.')">Tighten exec summary</span>
+          <span class="chip" onclick="quickRefine('Make the corrective actions more realistic. Assume site cannot easily redesign equipment.')">More realistic actions</span>
+          <span class="chip" onclick="quickRefine('Remove any speculation or items not directly supported by the input. Be conservative.')">Reduce speculation</span>
+          <span class="chip" onclick="quickRefine('Add more detail to the ICAM organisational factors section.')">More ICAM detail</span>
+        </div>
+        <div class="rep-chat-history" id="chat-history">
+          <div class="rep-chat-msg ai">Draft ready. What would you like to change? You can ask for tweaks like adding a contributing factor, rewording corrective actions, removing speculation, or adding new facts you've just learned.</div>
+        </div>
+        <div class="rep-chat-input-wrap">
+          <textarea class="rep-chat-input" id="chat-input" placeholder="e.g. Add fatigue as a contributing factor — worker was on hour 11 of a 12-hour shift" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendRefinement();}"></textarea>
+          <button class="rep-chat-send" id="chat-send-btn" onclick="sendRefinement()">Update draft</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1015,50 +1019,90 @@ function focusForm() {
   }, 400);
 }
 
-// ============ COUNTRY / STATE ============
-const STATE_DATA = {
-  'Australia': ['ACT','NSW','NT','QLD','SA','TAS','VIC','WA'],
-  'New Zealand': [],
-  'United Kingdom': ['England','Scotland','Wales','Northern Ireland'],
-  'Canada': ['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'],
-  'United States': ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
-};
+// ============ MULTI-SELECT (incident type) ============
+function toggleMultiSelect() {
+  document.getElementById('type-multi-select').classList.toggle('open');
+}
 
-function onCountryChange() {
-  const country = document.getElementById('hero-country').value;
-  const stateRow = document.getElementById('state-row');
-  const typeStandalone = document.getElementById('type-row-standalone');
-  const states = STATE_DATA[country] || [];
+// Close multi-select on outside click
+document.addEventListener('click', (e) => {
+  const ms = document.getElementById('type-multi-select');
+  if (ms && !ms.contains(e.target)) ms.classList.remove('open');
+});
 
-  if (states.length > 0) {
-    const sel = document.getElementById('hero-state');
-    sel.innerHTML = '<option value="">Select...</option>' +
-      states.map(s => `<option value="${s}">${s}</option>`).join('');
-    stateRow.style.display = '';
-    typeStandalone.style.display = 'none';
+// Update label whenever a checkbox changes
+document.addEventListener('change', (e) => {
+  if (e.target.matches('#type-select-panel input[type="checkbox"]')) updateMultiSelectLabel();
+});
+
+function updateMultiSelectLabel() {
+  const checked = [...document.querySelectorAll('#type-select-panel input:checked')].map(i => i.value);
+  const lbl = document.getElementById('type-select-label');
+  if (checked.length === 0) {
+    lbl.textContent = 'Select...';
+    lbl.classList.remove('has-value');
+  } else if (checked.length <= 2) {
+    lbl.textContent = checked.join(', ');
+    lbl.classList.add('has-value');
   } else {
-    stateRow.style.display = 'none';
-    typeStandalone.style.display = '';
+    lbl.textContent = checked.slice(0, 2).join(', ') + ` +${checked.length - 2} more`;
+    lbl.classList.add('has-value');
   }
 }
 
-// ============ CHIPS ============
-function toggleChip(el, group) {
-  el.classList.toggle('selected');
+function getSelectedTypes() {
+  return [...document.querySelectorAll('#type-select-panel input:checked')].map(i => i.value);
 }
 
+// ============ CHIPS ============
 function selectFmt(el) {
   document.querySelectorAll('.chip.fmt').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
 }
 
-// ============ FILE UPLOAD ============
+// ============ FILE UPLOAD WITH IMAGE COMPRESSION ============
 let uploadedFiles = [];
+const MAX_TOTAL_BYTES = 4.2 * 1024 * 1024; // ~4.2 MB leaves headroom under Vercel's 4.5 MB
 
-function onFilesSelected(files) {
+async function compressImage(file) {
+  if (!file.type.startsWith('image/')) return file;
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => resolve(file);
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = () => resolve(file);
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          const maxDim = 1600;
+          let { width, height } = img;
+          if (width > maxDim || height > maxDim) {
+            if (width >= height) { height = Math.round((height / width) * maxDim); width = maxDim; }
+            else { width = Math.round((width / height) * maxDim); height = maxDim; }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          canvas.toBlob((blob) => {
+            if (!blob) return resolve(file);
+            const out = new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg', lastModified: Date.now() });
+            resolve(out);
+          }, 'image/jpeg', 0.82);
+        } catch (_) { resolve(file); }
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function onFilesSelected(files) {
   for (const f of files) {
-    if (!uploadedFiles.find(x => x.name === f.name && x.size === f.size)) {
-      uploadedFiles.push(f);
+    const processed = await compressImage(f);
+    if (!uploadedFiles.find(x => x.name === processed.name)) {
+      uploadedFiles.push(processed);
     }
   }
   renderFileList();
@@ -1069,11 +1113,35 @@ function removeFile(name) {
   renderFileList();
 }
 
+function fmtBytes(n) {
+  if (n < 1024) return n + ' B';
+  if (n < 1024 * 1024) return (n / 1024).toFixed(0) + ' KB';
+  return (n / 1024 / 1024).toFixed(2) + ' MB';
+}
+
 function renderFileList() {
   const list = document.getElementById('upload-files-list');
+  const meter = document.getElementById('upload-meter');
+  const size = document.getElementById('upload-size');
+  const fill = document.getElementById('upload-bar-fill');
+
   list.innerHTML = uploadedFiles.map(f =>
-    `<span class="upload-file-tag">${escapeHtml(f.name)} <span class="rm" onclick="removeFile('${escapeHtml(f.name)}')">&times;</span></span>`
+    `<span class="upload-file-tag">${escapeHtml(f.name)} <span style="opacity:0.6;font-size:10px;">(${fmtBytes(f.size)})</span> <span class="rm" onclick="removeFile('${escapeHtml(f.name)}')">&times;</span></span>`
   ).join('');
+
+  if (uploadedFiles.length === 0) {
+    meter.style.display = 'none';
+    return;
+  }
+
+  const total = uploadedFiles.reduce((s, f) => s + f.size, 0);
+  const pct = Math.min(100, (total / MAX_TOTAL_BYTES) * 100);
+  size.textContent = fmtBytes(total);
+  fill.style.width = pct + '%';
+  fill.classList.remove('warn', 'danger');
+  if (pct > 90) fill.classList.add('danger');
+  else if (pct > 70) fill.classList.add('warn');
+  meter.style.display = 'block';
 }
 
 // Drag-and-drop
@@ -1093,18 +1161,11 @@ const SAMPLE_INCIDENT = "During night-shift maintenance on the conveyor head pul
 
 function loadSample() {
   document.getElementById('hero-description').value = SAMPLE_INCIDENT;
-  document.getElementById('hero-industry').value = 'Mining';
-  document.getElementById('hero-country').value = 'Australia';
-  onCountryChange();
-  setTimeout(() => {
-    document.getElementById('hero-state').value = 'QLD';
-    document.getElementById('hero-type').value = 'Medical treatment';
-  }, 50);
-  // Pre-select relevant risk chips
-  document.querySelectorAll('.chip[data-risk]').forEach(c => {
-    const r = c.dataset.risk;
-    if (['Stored energy','Moving plant / machinery','Confined space'].includes(r)) c.classList.add('selected');
+  // Pre-tick relevant incident types
+  document.querySelectorAll('#type-select-panel input').forEach(cb => {
+    cb.checked = ['Medical treatment'].includes(cb.value);
   });
+  updateMultiSelectLabel();
   const card = document.getElementById('try-card');
   card.style.transition = 'transform 0.4s ease';
   card.style.transform = 'scale(1.01)';
@@ -1222,27 +1283,24 @@ let currentOutputFormat = 'pdf';
 
 async function generateAnalysis() {
   const desc = document.getElementById('hero-description').value.trim();
-  const industry = document.getElementById('hero-industry').value;
-  const country = document.getElementById('hero-country').value;
-
-  // Get incident type from whichever field is visible
-  const stateRow = document.getElementById('state-row');
-  const incidentType = stateRow.style.display !== 'none'
-    ? document.getElementById('hero-type').value
-    : document.getElementById('hero-type-single').value;
-
-  const state = document.getElementById('hero-state').value;
-
-  const risks = [...document.querySelectorAll('#risk-chips .chip.selected, .chip.hpi.selected')]
-    .map(c => c.dataset.risk).filter(Boolean);
-
-  const hpiSif = document.querySelector('.chip.hpi.selected') !== null;
+  const types = getSelectedTypes();
 
   const fmt = document.querySelector('.chip.fmt.selected');
   currentOutputFormat = fmt ? fmt.dataset.fmt : 'pdf';
 
-  if (!desc || !industry || !incidentType || !country) {
-    alert('Please fill in: what happened, industry, incident type, and country.');
+  if (!desc) {
+    alert('Please describe what happened in the text box.');
+    return;
+  }
+  if (types.length === 0) {
+    alert('Please select at least one incident type.');
+    return;
+  }
+
+  // Check total upload size before sending
+  const totalSize = uploadedFiles.reduce((s, f) => s + f.size, 0);
+  if (totalSize > MAX_TOTAL_BYTES) {
+    alert(`Total file size (${fmtBytes(totalSize)}) exceeds the 4.5 MB limit. Please remove some files.`);
     return;
   }
 
@@ -1256,12 +1314,7 @@ async function generateAnalysis() {
   // Build FormData
   const formData = new FormData();
   formData.append('description', desc);
-  formData.append('industry', industry);
-  formData.append('incidentType', incidentType);
-  formData.append('country', country);
-  formData.append('state', state);
-  formData.append('risks', JSON.stringify(risks));
-  formData.append('hpiSif', String(hpiSif));
+  formData.append('incidentType', JSON.stringify(types));
   uploadedFiles.forEach(f => formData.append('files', f));
 
   // Start API call
@@ -1280,17 +1333,14 @@ async function generateAnalysis() {
       alert('Investigation failed: ' + err.message);
     });
 
-  // Start animation — when done, check if API is also done
   runAnimation(() => {
     animDone = true;
     if (apiResult !== null) {
       finishAndShow();
     } else if (!apiError) {
-      // API still running — keep loading visible
       document.getElementById('substatus-text').textContent = 'Finalising report...';
       document.getElementById('progress-pct').textContent = '99%';
       document.getElementById('progress-fill').style.width = '99%';
-      // Poll until API resolves
       const waitInterval = setInterval(() => {
         if (apiResult !== null) { clearInterval(waitInterval); finishAndShow(); }
         if (apiError) { clearInterval(waitInterval); }
@@ -1303,7 +1353,9 @@ async function generateAnalysis() {
     loading.classList.remove('active');
     if (!apiResult) return;
     currentReport = apiResult;
+    chatHistory = [{ role: 'ai', text: "Draft ready. What would you like to change? You can ask for tweaks like adding a contributing factor, rewording corrective actions, removing speculation, or adding new facts you've just learned." }];
     document.getElementById('report-body').innerHTML = renderReport(apiResult);
+    renderChatHistory();
     document.getElementById('report-overlay').classList.add('active');
     document.body.style.overflow = 'hidden';
 
@@ -1326,10 +1378,128 @@ function closeReport() {
   document.body.style.overflow = '';
 }
 
+// ============ REFINEMENT CHAT ============
+let chatHistory = [];
+
+function quickRefine(text) {
+  document.getElementById('chat-input').value = text;
+  sendRefinement();
+}
+
+function renderChatHistory() {
+  const cont = document.getElementById('chat-history');
+  if (!cont) return;
+  cont.innerHTML = chatHistory.map(m => {
+    if (m.role === 'thinking') {
+      return `<div class="rep-chat-msg thinking"><span class="dot"></span><span class="dot"></span><span class="dot"></span> ${escapeHtml(m.text)}</div>`;
+    }
+    const tag = m.changeTag ? `<div class="change-tag">${escapeHtml(m.changeTag)}</div>` : '';
+    return `<div class="rep-chat-msg ${m.role}">${escapeHtml(m.text)}${tag}</div>`;
+  }).join('');
+  cont.scrollTop = cont.scrollHeight;
+}
+
+async function sendRefinement() {
+  const input = document.getElementById('chat-input');
+  const instruction = input.value.trim();
+  if (!instruction || !currentReport) return;
+
+  const sendBtn = document.getElementById('chat-send-btn');
+  sendBtn.disabled = true;
+  sendBtn.textContent = 'Updating...';
+
+  chatHistory.push({ role: 'user', text: instruction });
+  chatHistory.push({ role: 'thinking', text: 'Updating draft...' });
+  renderChatHistory();
+  input.value = '';
+
+  // Snapshot previous report for diff
+  const previous = JSON.parse(JSON.stringify(currentReport));
+
+  try {
+    const response = await fetch('/api/refine', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ currentReport, instruction })
+    });
+    const data = await response.json();
+    // Remove thinking placeholder
+    chatHistory = chatHistory.filter(m => m.role !== 'thinking');
+
+    if (data.error) {
+      chatHistory.push({ role: 'ai', text: 'Sorry, that did not work: ' + data.error });
+    } else {
+      currentReport = data.report;
+      document.getElementById('report-body').innerHTML = renderReport(currentReport);
+      // Highlight sections that changed
+      flashChangedSections(previous, currentReport);
+      chatHistory.push({
+        role: 'ai',
+        text: 'Done.',
+        changeTag: data.changesSummary || 'Report updated.'
+      });
+    }
+  } catch (e) {
+    chatHistory = chatHistory.filter(m => m.role !== 'thinking');
+    chatHistory.push({ role: 'ai', text: 'Network error: ' + e.message });
+  } finally {
+    renderChatHistory();
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Update draft';
+  }
+}
+
+function flashChangedSections(oldReport, newReport) {
+  // Compare main fields and find which sections changed
+  const sectionMap = {
+    executiveSummary: 1,
+    cleanDescription: 2,
+    immediateCauses: 3,
+    contributingFactors: 4,
+    informationGaps: 5,
+    fiveWhys: 6,
+    icam: 7,
+    systemicFindings: 8,
+    suggestedCorrectiveActions: 9,
+    lessonsLearned: 10,
+    regulatoryNotes: 11
+  };
+  const changedIndices = new Set();
+  for (const [key, idx] of Object.entries(sectionMap)) {
+    if (JSON.stringify(oldReport[key]) !== JSON.stringify(newReport[key])) {
+      changedIndices.add(idx);
+    }
+  }
+  // Flash matching sections in the DOM (by order of appearance)
+  setTimeout(() => {
+    const sections = document.querySelectorAll('#report-body .rep-section');
+    sections.forEach((s, i) => {
+      // i is 0-indexed; section numbers shown can vary. Flash all changed for simplicity.
+      // Match by section number text inside
+      const numEl = s.querySelector('.rep-section-num');
+      if (numEl) {
+        const num = parseInt(numEl.textContent, 10);
+        // We don't know the exact mapping after info gaps shift; just flash any section if any change
+      }
+    });
+    // Simpler: flash all sections — visually communicates "report updated"
+    if (changedIndices.size > 0) {
+      sections.forEach(s => {
+        s.classList.remove('changed');
+        void s.offsetWidth; // restart animation
+        s.classList.add('changed');
+      });
+    }
+  }, 50);
+}
+
 // ============ REPORT RENDERING ============
 function renderReport(r) {
-  const industry = r.industry || '';
+  const industry = r.industry || r.detectedIndustry || 'Unknown';
   const type = r.type || '';
+  const country = r.country || r.detectedCountry || 'Unknown';
+  const state = r.state || r.detectedState || '';
+
   const keyNums = [
     { val: String((r.immediateCauses || []).length), lbl: 'Immediate causes' },
     { val: String((r.contributingFactors || []).length), lbl: 'Contributing factors' },
@@ -1345,6 +1515,19 @@ function renderReport(r) {
   const systemicFindings = r.systemicFindings || r.rootCauses || [];
   const correctiveActions = r.suggestedCorrectiveActions || r.correctiveActions || [];
   const infoGaps = r.informationGaps || [];
+  const detectedRisks = r.detectedRiskAreas || [];
+  const isHpiSif = r.detectedHpiSif === true;
+
+  // Build detected bar
+  let detectedTags = '';
+  if (industry && industry !== 'Unknown') detectedTags += `<span class="rep-detected-tag">${escapeHtml(industry)}</span>`;
+  if (country && country !== 'Unknown') detectedTags += `<span class="rep-detected-tag">${escapeHtml(country)}${state ? ', ' + escapeHtml(state) : ''}</span>`;
+  detectedRisks.forEach(rk => { detectedTags += `<span class="rep-detected-tag">${escapeHtml(rk)}</span>`; });
+  if (isHpiSif) detectedTags += `<span class="rep-detected-tag warn">&#9888; HPI / SIF potential</span>`;
+
+  const detectedBar = detectedTags
+    ? `<div class="rep-detected-bar"><span class="label">AI-detected context</span>${detectedTags}</div>`
+    : '';
 
   return `
     <div class="draft-banner">
@@ -1359,9 +1542,11 @@ function renderReport(r) {
         <span>Ref<strong>${r.refId}</strong></span>
         <span>Date<strong>${r.date}</strong></span>
         <span>Industry<strong>${escapeHtml(industry)}</strong></span>
-        ${r.country ? `<span>Country<strong>${escapeHtml(r.country)}${r.state ? ', ' + escapeHtml(r.state) : ''}</strong></span>` : ''}
+        ${country !== 'Unknown' ? `<span>Country<strong>${escapeHtml(country)}${state ? ', ' + escapeHtml(state) : ''}</strong></span>` : ''}
       </div>
     </div>
+
+    ${detectedBar}
 
     <div class="rep-section">
       <div class="rep-section-head"><span class="rep-section-num">1</span><span class="rep-section-title">Executive Summary</span></div>
@@ -1438,11 +1623,6 @@ function renderReport(r) {
       <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 10 : 9}</span><span class="rep-section-title">Lessons Learned</span></div>
       <p class="small-muted">Cross-site applicable insights for preventing recurrence.</p>
       ${(r.lessonsLearned || []).map((l, i) => `<div class="rep-callout"><strong>Lesson ${i+1}</strong><p>${escapeHtml(l)}</p></div>`).join('')}
-    </div>
-
-    <div class="rep-section">
-      <div class="rep-section-head"><span class="rep-section-num">${infoGaps.length > 0 ? 11 : 10}</span><span class="rep-section-title">Regulatory &amp; Compliance Notes</span></div>
-      <p>${escapeHtml(r.regulatoryNotes || r.regulatory || '')}</p>
     </div>
 
     <div class="rep-footer">
@@ -1541,7 +1721,13 @@ function downloadPDF() {
     const size = opts.size || 10; const color = opts.color || INK; const bold = opts.bold || false;
     doc.setFontSize(size); doc.setFont('helvetica', bold ? 'bold' : 'normal'); doc.setTextColor(...color);
     const lines = doc.splitTextToSize(String(text || ''), contentW);
-    lines.forEach(line => { checkPage(size * 0.5); doc.text(line, margin, y); y += size * 0.42; });
+    lines.forEach(line => {
+      checkPage(size * 0.5);
+      // Re-apply styling after potential page break
+      doc.setFontSize(size); doc.setFont('helvetica', bold ? 'bold' : 'normal'); doc.setTextColor(...color);
+      doc.text(line, margin, y);
+      y += size * 0.42;
+    });
     y += 2;
   }
 
@@ -1564,6 +1750,8 @@ function downloadPDF() {
     doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...INK);
     const lines = doc.splitTextToSize(String(text || ''), contentW - 10);
     checkPage(lines.length * 4.2 + 3);
+    // Re-apply after potential page break
+    doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(...INK);
     doc.setFillColor(...BLUE); doc.circle(margin + 2, y - 1, 1, 'F');
     lines.forEach(line => { doc.text(line, margin + 7, y); y += 4.2; });
     y += 1;
@@ -1585,7 +1773,8 @@ function downloadPDF() {
   y += 12;
 
   doc.setFontSize(24); doc.setFont('helvetica', 'bold'); doc.setTextColor(...INK);
-  const titleLines = doc.splitTextToSize((r.industry || '') + ' \u2014 ' + (r.type || ''), contentW);
+  const titlePrefix = (r.industry && r.industry !== 'Unknown') ? r.industry + ': ' : '';
+  const titleLines = doc.splitTextToSize(titlePrefix + (r.type || 'Incident Investigation'), contentW);
   titleLines.forEach(line => { doc.text(line, margin, y); y += 10; });
   y += 2;
 
@@ -1597,8 +1786,9 @@ function downloadPDF() {
   doc.setFontSize(10); doc.setTextColor(...INK);
   doc.text(r.refId || '', margin + 4, y + 13);
   doc.text(r.date || '', margin + 50, y + 13);
-  doc.text(r.industry || '', margin + 100, y + 13);
-  doc.text((r.country || '') + (r.state ? ', ' + r.state : ''), margin + 145, y + 13);
+  doc.text(r.industry || 'Unknown', margin + 100, y + 13);
+  const countryText = (r.country && r.country !== 'Unknown') ? r.country + (r.state ? ', ' + r.state : '') : 'Unknown';
+  doc.text(countryText, margin + 145, y + 13);
   y += 24;
 
   const icam = r.icam || {};
@@ -1723,9 +1913,6 @@ function downloadPDF() {
   h2(sectionNum++, 'Lessons Learned');
   p('Cross-site applicable insights for prevention.', { color: MUTED, size: 9 });
   (r.lessonsLearned || []).forEach((l, i) => callout('Lesson ' + (i + 1), l));
-
-  h2(sectionNum++, 'Regulatory & Compliance Notes');
-  p(r.regulatoryNotes || r.regulatory || '');
 
   addFooter();
   doc.save('Safehub-Investigation-' + (r.refId || 'Report') + '.pdf');
