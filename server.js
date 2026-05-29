@@ -51,6 +51,7 @@ JURISDICTION-SPECIFIC REGULATORY REFERENCES:
 - Australia: Work Health and Safety Act 2011 (Cth and state equivalents), Safe Work Australia codes of practice, state mining/rail/construction regulations (WHS Regs, mining regs by state)
 - New Zealand: Health and Safety at Work Act 2015 (HSWA), WorkSafe NZ guidelines, approved codes of practice
 - United Kingdom: Health and Safety at Work Act 1974, Management of Health and Safety at Work Regulations 1999, RIDDOR 2013, relevant HSE guidance documents
+- Europe (EU member states): EU Framework Directive 89/391/EEC (OSH Framework Directive), EU-OSHA guidance, national OSH laws (e.g. Germany ArbSchG, France Code du Travail Part IV, Italy D.Lgs 81/2008, Spain Law 31/1995), Seveso III Directive for major-accident hazards where applicable
 - Canada: Provincial OH&S legislation (BC: Workers Compensation Act / WorkSafeBC, Ontario: OHSA, Alberta: OHS Act, etc.), CCOHS standards
 - United States: OSHA regulations (29 CFR 1910 General Industry / 1926 Construction), NIOSH guidance, ANSI standards, state OSHA programs where applicable
 
@@ -153,7 +154,7 @@ AUTO-DETECTION FROM INPUT:
 You must detect the following from the description (and any uploaded documents/images). If you cannot reasonably determine a value, set it to "Unknown" or [] — do NOT guess wildly. Tag your confidence honestly.
 
 - detectedIndustry: e.g. "Mining", "Rail / Transport", "Construction", "Manufacturing", "Oil & Gas", "Utilities", "Healthcare", "Warehousing / Logistics", "Agriculture", or "Other / Unknown"
-- detectedCountry: One of "Australia", "New Zealand", "United Kingdom", "Canada", "United States", or "Unknown". Infer from terminology (e.g. "WHS Act" or "Aurizon" or "QLD" → Australia; "HSWA" → NZ; "OSHA" → US; "RIDDOR" → UK; "WorkSafeBC" → Canada). If no jurisdiction signals are present, set Unknown.
+- detectedCountry: One of "Australia", "New Zealand", "United Kingdom", "Europe", "Canada", "United States", or "Unknown". Infer from terminology (e.g. "WHS Act" or "Aurizon" or "QLD" → Australia; "HSWA" → NZ; "OSHA" → US; "RIDDOR" → UK; "WorkSafeBC" → Canada; references to EU directives, German/French/Italian/Spanish OSH law, or terms like "Berufsgenossenschaft" → Europe). If no jurisdiction signals are present, set Unknown.
 - detectedState: State or province if mentioned, else ""
 - detectedRiskAreas: Array of any of these that apply based on the incident: "Confined space", "Working at height", "Moving plant / machinery", "Stored energy", "Electrical", "Hot work", "Hazardous substances", "Lifting operations", "Excavation / ground collapse", "Slip / trip / fall", "Vehicle / traffic", "Fatigue", "Manual handling". Only include those clearly evident from the input.
 - detectedHpiSif: true ONLY if the incident clearly involved or had potential for serious injury or fatality (e.g. fatality, permanent injury, near-miss with severe potential). Otherwise false.
